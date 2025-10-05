@@ -1,17 +1,105 @@
+.pndlnk-logo-path {
+  fill: rgba(var(--ids__text-RGB), 1);
+  stroke-width: 0px;
+}
+
 .slide {
   display: flex;
   background-color: rgba(var(--ids__surface-RGB), 1);
-  padding: 2em;
-  gap: 1em;
+  --gap: 1em;
+  padding: calc(var(--gap) * 2);
+  gap: var(--gap);
   height: 100vh;
 
+  & .slide-number {
+    position: absolute;
+    font-family: var(--mono);
+    left: calc(var(--gap) * 2);
+    bottom: calc(var(--gap) * 2);
+
+  }
+
   & .slide-nav-column {
-    width: 8em;
+    width: 10em;
+
+    --ids__text-RGB: 255, 105, 105;
+    color: rgba(var(--ids__text-RGB), 1);
+
+    & .logo {
+      margin-top: -0.45em;
+      padding: 0.1em;
+      height: 1.1em;
+    }
+
+    & .product-title {
+      font-size: 1em;
+      font-family: var(--mono);
+      margin-bottom: 2em;
+    }
+
+    & h1 {
+      font-size: 1em;
+    }
   }
 
   & .slide-content {
+    border-top: 0.44em solid rgba(var(--ids__accent-RGB), 1);
+    padding-top: 1em;
+
     width: 60%;
 
     overflow: hidden;
+  }
+
+  & h1 {
+    font-size: 2em;
+  }
+
+  & h2 {
+    font-size: 2em;
+  }
+
+  & p {
+    font-size: 2em;
+  }
+
+  & ul,
+  ol {
+    font-size: 2em;
+
+    li {
+      margin-bottom: 0.15em;
+    }
+  }
+
+  & table {
+    border-spacing: 0;
+    margin: 2em 0;
+
+    thead,
+    tbody {
+      tr {
+        & th {
+          text-align: left;
+          border-bottom: 2px solid rgba(var(--ids__text-RGB), 1);
+          padding-bottom: 0.3em;
+        }
+
+        & td {
+          padding: 0.5em 1em 0.5em 0;
+          border-bottom: 1px solid rgba(var(--ids__text-RGB), 0.5);
+          vertical-align: top;
+          text-align: left;
+
+          & p {}
+        }
+
+        &:last-child {
+          & td {
+            border-bottom: none;
+          }
+        }
+      }
+    }
   }
 }
