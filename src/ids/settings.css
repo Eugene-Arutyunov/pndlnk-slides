@@ -107,6 +107,9 @@ body {
   font-family: var(--gothic);
   -webkit-font-smoothing: antialiased;
   font-weight: 350;
+
+  /* Это блокирует скролл */
+  overflow: hidden;
 }
 
 /* Density */
@@ -152,6 +155,6 @@ html {
 
 @media (prefers-reduced-motion: no-preference) {
   html {
-    scroll-behavior: smooth;
+    /*scroll-behavior: smooth;*/
   }
 }
