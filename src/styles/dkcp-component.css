@@ -162,7 +162,7 @@
     }
 
     &:before {
-      background-color: rgba(var(--ids__background-RGB), 1);
+      background-color: rgba(var(--ids__surface-RGB), 1);
       clip-path: polygon(0 100%, 0 95%, 50% 0, 100% 95%, 100% 100%);
       border-bottom: none;
       top: -3.33em;
@@ -240,6 +240,7 @@
     }
 
     & .dkcp-definition {
+      font-size: 0.5em;
       font-family: var(--hand);
       color: rgba(var(--ids__pen-RGB), 1);
 
