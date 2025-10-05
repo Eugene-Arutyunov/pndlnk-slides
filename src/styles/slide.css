@@ -1,0 +1,17 @@
+.slide {
+  display: flex;
+  background-color: rgba(var(--ids__surface-RGB), 1);
+  padding: 2em;
+  gap: 1em;
+  height: 100vh;
+
+  & .slide-nav-column {
+    width: 8em;
+  }
+
+  & .slide-content {
+    width: 60%;
+
+    overflow: hidden;
+  }
+}
