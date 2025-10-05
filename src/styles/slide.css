@@ -4,6 +4,7 @@
 }
 
 .slide {
+  position: relative;
   display: flex;
   background-color: rgba(var(--ids__surface-RGB), 1);
   --gap: 1em;
@@ -20,7 +21,7 @@
   }
 
   & .slide-nav-column {
-    width: 10em;
+    width: 11em;
 
     --ids__text-RGB: 255, 105, 105;
     color: rgba(var(--ids__text-RGB), 1);
@@ -34,41 +35,45 @@
     & .product-title {
       font-size: 1em;
       font-family: var(--mono);
-      margin-bottom: 2em;
+      margin-bottom: 1em;
     }
 
     & h1 {
-      font-size: 1em;
+      margin-top: 0;
+      font-size: 1.9em;
     }
   }
 
   & .slide-content {
     border-top: 0.44em solid rgba(var(--ids__accent-RGB), 1);
-    padding-top: 1em;
+    padding-top: 2.2em;
 
     width: 60%;
 
     overflow: hidden;
   }
 
-  & h1 {
-    font-size: 2em;
-  }
-
-  & h2 {
-    font-size: 2em;
+  & h1,
+  h2,
+  h3 {
+    margin-top: 0;
+    font-size: 1.9em;
+    line-height: 1;
   }
 
   & p {
-    font-size: 2em;
+    font-size: 1.9em;
+    line-height: 1;
+    margin-bottom: 0.2em;
   }
 
   & ul,
   ol {
-    font-size: 2em;
+    font-size: 1.9em;
 
     li {
       margin-bottom: 0.15em;
+      line-height: 1;
     }
   }
 

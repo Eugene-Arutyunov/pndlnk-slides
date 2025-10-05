@@ -169,7 +169,7 @@
   }
 
   & blockquote {
-    font-size: 1.8em;
+    font-size: 1.6em;
     line-height: 1;
     margin: 0;
     margin-bottom: calc(var(--ids__density) * 1em);
