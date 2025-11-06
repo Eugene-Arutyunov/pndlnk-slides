@@ -1,0 +1,459 @@
+{% set values = ['Баланс работы и жизни'] %}
+
+{% set segment = ['Независимые консультанты B2B'] %}
+
+{% set conflict = ['Быть доступным для команд клиентов, но не быть онлайн 24/7, ожидая подтверждений встреч'] %}
+
+{% set artifact = ['Планировщик встреч EasyMeet'] %}
+
+{% set artifactAttrs = [
+  '– Автоматическое подтверждение встреч без участия организатора',
+  '– Синхронизация с календарем в реальном времени',
+  '– Персонализированные приглашения с теплым тоном общения',
+  '– Возможность добавить личное сообщение к каждому временному слоту'
+] %}
+
+{% set arguments = [
+  '1. EasyMeet решает главную проблему специалистов: как быть доступным для команд клиентов, которые хотят забронировать консультацию, но при этом не сидеть онлайн 24/7 ожидая подтверждений',
+  '2. Он создан специально для независимых консультантов, коучей и экспертов, которые работают с бизнесом',
+  '3. EasyMeet – это планировщик встреч, который обеспечивает автоматическое подтверждение встречи без участия организатора и синхронизацию с календарем в реальном времени'
+] %}
+
+{% set priceConditions = [
+  'Подписка: 1200₽ в месяц',
+  'Первичная настройка'
+] %}
+
+{% set exchangeConditions = [
+  '30 дней бесплатного тестирования с полным функционалом'
+] %}
+
+{% set companyAttrs = [
+  'Компания-разработчик работает по 4-дневной рабочей неделе с 2019 года'
+] %}
+
+{% extends 'layout.html' %} {% set pageTitle = 'База ДКЦП, занятие 2' %} {% block content %}
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">1</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Курс «База ДКЦП»</h1>
+  </div>
+  <div class="slide-content">
+    <blockquote class="loud">
+      <p>Курс о том, как договариваться друг с другом о важнейших основах бизнеса</p></blockquote>
+    <h2>Занятие 2. Модель ДКЦП</h2>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">2</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Курс «База ДКЦП»</h1>
+  </div>
+  <div class="slide-content">
+    <p>В прошлой лекции мы обсудили:</p>
+    <ul>
+      <li>Взаимопонимание важнее взаимодействия</li>
+      <li>Перед сложным взаимодействием, где наша работа направлена на маркетинг и продвижение продукта, лучше договориться о фундаментальных понятиях</li>
+      <li>Одно из фундаментальных понятий – обмен.</li>
+      <li>У нас есть модель обмена, которая называется ДКЦП</li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">3</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+  </div>
+  <div class="slide-content">
+    <h2>Инварианты обмена</h2>
+    <p>В любом обмене, кто бы чем не обменивался всегда присутствуют следующие элементы:</p>
+    <ul>
+      <li>Участники обмена (продавец и покупатель)</li>
+      <li>То, чем они обмениваются друг с другом (конкретно)</li>
+      <li>То, что привело их к обмену</li>
+      <li>То как организован обмен по времени</li>
+      <li>То как они друг с другом коммуницируют</li>
+      <li>То какой смысл имеет обмен для обоих (символический смысл)</li>
+    </ul>
+    <p><em>вот тут бы какую-то схему, можно взять иллюстрацию из открытой лекции, но она не в стиле</em></p>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">4</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+  </div>
+  <div class="slide-content">
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Участники обмена</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Продавец</td>
+          <td>→ Атрибуты компании</td>
+        </tr>
+        <tr>
+          <td>Покупатель</td>
+          <td>→ Клиентский сегмент</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Чем они обмениваются друг с другом</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Продавец покупателю</td>
+          <td>→ Артефакт, атрибуты</td>
+        </tr>
+        <tr>
+          <td>Покупатель продавцу</td>
+          <td>→ Влад клиента</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">Что привело их к обмену</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Покупателя</td>
+          <td>→ Ключевой конфликт</td>
+        </tr>
+        <tr>
+          <td>Продавца</td>
+          <td>(Не учитывается в модели)</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">4</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+  </div>
+  <div class="slide-content">
+
+
+    <table>
+      <thead>
+        <tr>
+          <th>А ещё</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Как организован обмен по времени</td>
+          <td>→ Условия обмена</td>
+        </tr>
+        <tr>
+          <td>Как они друг с другом коммуницируют</td>
+          <td>→ Аргументы</td>
+        </tr>
+        <tr>
+          <td>Какой смысл имеет обмен для обоих (символический смысл)</td>
+          <td>→ Ценность</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">5</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+  </div>
+  <div class="slide-content">
+    {% set draft = true %}
+    {% include 'dkcp.html' %}
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">6</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+
+  </div>
+  <div class="slide-content">
+    <h2>Клиентский сегмент</h2>
+    <p>Этот блок отвечает за адресата нашего предложения. То, что написано здесь – и есть целевая аудитория.</p>
+
+    <h3>Корректность КС</h3>
+    <ol>
+      <li>Сформулированы проверяемые критерии сегмента</li>
+      <li>Нет элементов конфликта</li>
+    </ol>
+
+    <p>Наша формулировка: <em>{{ segment[0] }}</em></p>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">7</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+
+  </div>
+  <div class="slide-content">
+    <h2>Ключевой конфликт</h2>
+    <p>Этот блок отвечает за причину нашего представителя клиентского сегмента совершить обмен.</p>
+
+    <p><strong>Корректность КМК</strong></p>
+    <ol>
+      <li>Определено чьё поведение меняется (представителя КС или другого человека)</li>
+      <li>Определена деятельность, внутри которой лежит конфликт мотивации</li>
+      <li>Конфликт мотивации лежит внутри заявленной деятельности</li>
+      <li>Определён исходный и изменённый образ действия</li>
+      <li>В ключевом конфликте отсутствует упоминание артефакта компании или прямых конкурентов</li>
+      <li>Определена общая цель</li>
+      <li>Понятен ущерб от текущего образа действия</li>
+      <li>Нет барьеров, сформулированных «через отсутствие»</li>
+      <li>Для B2B представлены личные и организационные конфликты</li>
+      <li>Есть свидетельства из исследований о содержании КМК</li>
+    </ol>
+
+    <p>Наша формулировка: <em>{{ conflict[0] }}</em></p>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">8</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+  </div>
+  <div class="slide-content">
+    <h2>Артефакт</h2>
+    <p>Этот блок отвечает за то, что мы передаём клиенту в процессе обмена</p>
+
+    <p><strong>Корректность Артефакта</strong></p>
+    <ol>
+      <li>Указан класс артефакта (потребительская категория)</li>
+      <li>Идентифицирован тип (цепочка, мастерская, сеть) артефакта и его составялющих</li>
+      <li>Среди составляющих артефакта отсутствуют атрибуты</li>
+    </ol>
+
+    <p>Наша формулировка: <em>{{ artifact[0] }}</em></p>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">9</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+
+  </div>
+  <div class="slide-content">
+    <h2>Атрибуты</h2>
+    <p>Этот блок описывает свойства артефакта</p>
+
+    <p><strong>Корректность Атрибутов</strong></p>
+    <ol>
+      <li>Атрибуты отделены от артефактов</li>
+      <li>Атрибуты артефакта отделены от атрибутов компании</li>
+      <li>Атрибуты сформулированы как конкретные свойства или конкретные функции (набора или составных частей)</li>
+      <li>Присутствуют уникальные атрибуты (таких, которых нет у категории и/или конкурентов)</li>
+    </ol>
+
+    <p>Наша формулировка:</p>
+    <ul>
+      {% for attr in artifactAttrs %}
+        <li><em>{{ attr }}</em></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">10</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+
+  </div>
+  <div class="slide-content">
+    <h1>Вклад клиента</h1>
+    <p>Этот блок описывает то, что клиент со своей стороны вкладывает в обмен</p>
+
+    <h3>Корректность вклада клиента</h3>
+    <ol>
+      <li>Определён материальный вклад</li>
+      <li>Определён нематериальный вклад</li>
+    </ol>
+
+    <p>Наша формулировка:</p>
+    <ul>
+      {% for condition in priceConditions %}
+        <li><em>{{ condition }}</em></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">11</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+
+  </div>
+  <div class="slide-content">
+    <h2>Условия обмена</h2>
+    <p>Этот блок описывает как наш обмен устроен во времени</p>
+
+    <p><strong>Корректность условий обмена</strong></p>
+    <ol>
+      <li>Описывает характеристики процесса организации обмена</li>
+    </ol>
+
+    <p>Наша формулировка:</p>
+    <ul>
+      {% for condition in exchangeConditions %}
+        <li><em>{{ condition }}</em></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">12</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+
+  </div>
+  <div class="slide-content">
+    <h2>Атрибуты компании</h2>
+    <p>Этот блок описывает наши особенности как продавца.</p>
+
+    <p><strong>Корректность атрибутов компании</strong></p>
+    <ol>
+      <li>Атрибуты сформулированы как проверяемые характеристики или особенности</li>
+      <li>Нет перетёкших ценностей или недоказанных утверждений</li>
+    </ol>
+
+    <p>Наша формулировка:</p>
+    <ul>
+      {% for attr in companyAttrs %}
+        <li><em>{{ attr }}</em></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">13</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+
+  </div>
+  <div class="slide-content">
+    <h2>Ценности</h2>
+    <p>Этот блок описывает смысл, значение нашего обмена для сторон</p>
+
+    <p><strong>Корректность ценностей</strong></p>
+    <ol>
+      <li>Формулировка в 1-2 слова. Если хочется больше – скорее всего это аргумент.</li>
+      <li>Ценность описывает не физические свойства продукта, а то, что он символизирует. Можно ли потрогать, измерить или сфотографировать эту ценность? Если да - это скорее всего атрибут.</li>
+      <li>Можно предположить встраивание этой ценности в некоторую иерархию?</li>
+    </ol>
+
+    <p>Наша формулировка: <em>{{ values[0] }}</em></p>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">14</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+
+  </div>
+  <div class="slide-content">
+    <h2>Аргументы</h2>
+    <p>Этот блок содержит сообщения о взаимосвязи блоков модели между собой.</p>
+
+    <p><strong>Проверка аргументов</strong></p>
+    <ol>
+      <li>Аргументы представляют собой полные законченные предложения</li>
+      <li>Нет аргументов, связанных менее чем с двумя элементами</li>
+    </ol>
+
+    <p>Наша формулировка:</p>
+    <ul>
+      {% for argument in arguments %}
+        <li><em>{{ argument }}</em></li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="slide-nav-column">
+    <div class="slide-number">15</div>
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Модель ДКЦП</h1>
+
+  </div>
+  <div class="slide-content">
+    <h2>Выводы</h2>
+    <ul>
+      <li>В любом обмене, кто бы чем не обменивался всегда присутствуют тематические блоки, называемые инвариантами</li>
+      <li>Модель ДКЦП – это схема на основе инвариантов обмена</li>
+      <li>У каждого блока есть критерии корректности, которые позволяют оценить правильно ли мы их заполнили</li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}
