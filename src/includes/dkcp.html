@@ -8,11 +8,9 @@ artifact: Артефакт - artifactAttrs: Атрибуты артефакта 
       <div class="dkcp-digit">8</div>
       <div class="dkcp-title">Ценность</div>
       <div class="dkcp-definition">
-        {% if values %}
-          {% for item in values %}
-            <p>{{ item }}</p>
-          {% endfor %}
-        {% endif %}
+        {% if values %} {% for item in values %}
+        <p>{{ item }}</p>
+        {% endfor %} {% endif %}
       </div>
     </div>
   </div>
@@ -23,24 +21,20 @@ artifact: Артефакт - artifactAttrs: Атрибуты артефакта 
         <div class="dkcp-digit">1</div>
         <div class="dkcp-title">Клиентский сегмент</div>
         <div class="dkcp-definition">
-          {% if segment %}
-            {% for item in segment %}
-              <p>{{ item }}</p>
-            {% endfor %}
-          {% endif %}
+          {% if segment %} {% for item in segment %}
+          <p>{{ item }}</p>
+          {% endfor %} {% endif %}
         </div>
         <div class="dkcp-hint"></div>
       </div>
 
       <div class="dkcp-block conflict">
         <div class="dkcp-digit">2</div>
-        <div class="dkcp-title">Ключевой мотивационный конфликт</div>
+        <div class="dkcp-title">Мотивационный конфликт</div>
         <div class="dkcp-definition">
-          {% if conflict %}
-            {% for item in conflict %}
-              <p>{{ item }}</p>
-            {% endfor %}
-          {% endif %}
+          {% if conflict %} {% for item in conflict %}
+          <p>{{ item }}</p>
+          {% endfor %} {% endif %}
         </div>
         <div class="dkcp-hint"></div>
       </div>
@@ -49,11 +43,9 @@ artifact: Артефакт - artifactAttrs: Атрибуты артефакта 
         <div class="dkcp-digit">9</div>
         <div class="dkcp-title">Аргументы</div>
         <div class="dkcp-definition">
-          {% if arguments %}
-            {% for item in arguments %}
-              <p>{{ item }}</p>
-            {% endfor %}
-          {% endif %}
+          {% if arguments %} {% for item in arguments %}
+          <p>{{ item }}</p>
+          {% endfor %} {% endif %}
         </div>
         <div class="dkcp-hint"></div>
       </div>
@@ -62,11 +54,9 @@ artifact: Артефакт - artifactAttrs: Атрибуты артефакта 
         <div class="dkcp-digit">4</div>
         <div class="dkcp-title">Атрибуты артефакта</div>
         <div class="dkcp-definition">
-          {% if artifactAttrs %}
-            {% for item in artifactAttrs %}
-              <p>{{ item }}</p>
-            {% endfor %}
-          {% endif %}
+          {% if artifactAttrs %} {% for item in artifactAttrs %}
+          <p>{{ item }}</p>
+          {% endfor %} {% endif %}
         </div>
         <div class="dkcp-hint"></div>
       </div>
@@ -74,11 +64,9 @@ artifact: Артефакт - artifactAttrs: Атрибуты артефакта 
         <div class="dkcp-digit">3</div>
         <div class="dkcp-title">Артефакт</div>
         <div class="dkcp-definition">
-          {% if artifact %}
-            {% for item in artifact %}
-              <p>{{ item }}</p>
-            {% endfor %}
-          {% endif %}
+          {% if artifact %} {% for item in artifact %}
+          <p>{{ item }}</p>
+          {% endfor %} {% endif %}
         </div>
         <div class="dkcp-hint"></div>
       </div>
@@ -89,22 +77,18 @@ artifact: Артефакт - artifactAttrs: Атрибуты артефакта 
         <div class="dkcp-digit">5</div>
         <div class="dkcp-title">Вклад клиента</div>
         <div class="dkcp-definition">
-          {% if priceConditions %}
-            {% for item in priceConditions %}
-              <p>{{ item }}</p>
-            {% endfor %}
-          {% endif %}
+          {% if priceConditions %} {% for item in priceConditions %}
+          <p>{{ item }}</p>
+          {% endfor %} {% endif %}
         </div>
       </div>
       <div class="dkcp-block exchange">
         <div class="dkcp-digit">6</div>
         <div class="dkcp-title">Условия обмена</div>
         <div class="dkcp-definition">
-          {% if exchangeConditions %}
-            {% for item in exchangeConditions %}
-              <p>{{ item }}</p>
-            {% endfor %}
-          {% endif %}
+          {% if exchangeConditions %} {% for item in exchangeConditions %}
+          <p>{{ item }}</p>
+          {% endfor %} {% endif %}
         </div>
       </div>
     </div>
@@ -115,11 +99,9 @@ artifact: Артефакт - artifactAttrs: Атрибуты артефакта 
       <div class="dkcp-digit">7</div>
       <div class="dkcp-title">Атрибуты компании</div>
       <div class="dkcp-definition">
-        {% if companyAttrs %}
-          {% for item in companyAttrs %}
-            <p>{{ item }}</p>
-          {% endfor %}
-        {% endif %}
+        {% if companyAttrs %} {% for item in companyAttrs %}
+        <p>{{ item }}</p>
+        {% endfor %} {% endif %}
       </div>
     </div>
   </div>

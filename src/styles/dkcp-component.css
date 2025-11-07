@@ -240,12 +240,17 @@
     }
 
     & .dkcp-definition {
-      font-size: 0.5em;
+      font-size: 0.4em;
       font-family: var(--hand);
       color: rgba(var(--ids__pen-RGB), 1);
+      hyphens: auto;
 
       @media (width < 767px) {
         /*font-size: 0.5em;*/
+      }
+
+      & p {
+        margin-bottom: 0.5em;
       }
     }
   }

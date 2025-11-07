@@ -73,7 +73,8 @@
     font-size: 1.9em;
 
     li {
-      margin-bottom: 0.5em;
+      margin-top: 0.2em;
+      margin-bottom: 0.4em;
       line-height: 1;
     }
   }
