@@ -73,7 +73,7 @@
     font-size: 1.9em;
 
     li {
-      margin-bottom: 0.15em;
+      margin-bottom: 0.5em;
       line-height: 1;
     }
   }
@@ -107,6 +107,18 @@
           }
         }
       }
+    }
+  }
+}
+
+.ids {
+
+  & .hand {
+    font-family: var(--hand);
+    color: rgba(var(--ids__pen-RGB), 1);
+
+    & li em {
+      font-family: var(--hand);
     }
   }
 }
