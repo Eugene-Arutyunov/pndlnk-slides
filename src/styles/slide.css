@@ -12,12 +12,51 @@
   gap: var(--gap);
   height: 100vh;
 
+  @media print {
+    page-break-after: always;
+    height: 100vh;
+  }
+
+  &:last-child {
+    @media print {
+      page-break-after: auto;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 2px dashed rgba(var(--ids__accent-RGB), 0.5);
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      transparent 96%,
+      rgba(var(--ids__surface-RGB), 1) 96%,
+      rgba(var(--ids__surface-RGB), 1) 100%
+    );
+    pointer-events: none;
+    display: none;
+    z-index: 1000;
+    box-sizing: border-box;
+
+    @media print {
+      display: none !important;
+    }
+  }
+
   & .slide-number {
     position: absolute;
     font-family: var(--mono);
     left: calc(var(--gap) * 2);
     bottom: calc(var(--gap) * 2);
+  }
 
+  body.show-guide & .slide-number {
+    top: calc(100vw * 9 / 16 - var(--gap) * 2.5);
   }
 
   & .slide-nav-column {
@@ -51,6 +90,11 @@
     width: 59%;
 
     overflow: hidden;
+
+    @media print {
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
   }
 
   & h1,
@@ -59,6 +103,10 @@
     margin-top: 0;
     font-size: 1.9em;
     line-height: 1;
+
+    @media print {
+      print-color-adjust: exact;
+    }
   }
 
   & p {
@@ -84,6 +132,10 @@
     border-spacing: 0;
     margin: 1em 0;
 
+    @media print {
+      print-color-adjust: exact;
+    }
+
     thead,
     tbody {
       tr {
@@ -99,7 +151,8 @@
           vertical-align: top;
           text-align: left;
 
-          & p {}
+          & p {
+          }
         }
 
         &:last-child {
@@ -112,8 +165,23 @@
   }
 }
 
-.ids {
+@media print {
+  @page {
+    size: 1600px 900px;
+    margin: 0;
+  }
 
+  body {
+    print-color-adjust: exact;
+    font-size: 25.5px;
+  }
+}
+
+body.show-guide .slide::after {
+  display: block;
+}
+
+.ids {
   & .hand {
     font-family: var(--hand);
     color: rgba(var(--ids__pen-RGB), 1);

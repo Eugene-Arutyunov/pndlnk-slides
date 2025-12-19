@@ -51,6 +51,16 @@ class SlidesPlayer {
         event.preventDefault();
         this.handleNumberInput(event.key);
       }
+
+      // Клавиша P - переключить габаритный прямоугольник (но не перехватывать Cmd+P/Ctrl+P)
+      else if (
+        (event.key === "p" || event.key === "P" || event.key === "KeyP") &&
+        !event.metaKey &&
+        !event.ctrlKey
+      ) {
+        event.preventDefault();
+        document.body.classList.toggle("show-guide");
+      }
     });
   }
 
