@@ -29,10 +29,6 @@
         font-size: 1.02em;
       }
 
-      @media (width < 767px) {
-        font-size: 1.35em;
-      }
-
       &.serif {
         font-size: 1.44em;
         line-height: 1.2;
@@ -72,10 +68,6 @@
 
     &.XL {
       font-size: 6.5em;
-
-      @media (width < 767px) {
-        font-size: 4em;
-      }
     }
   }
 
@@ -180,10 +172,6 @@
     padding-bottom: calc(var(--ids__density) * 0.4em);
     padding-left: calc(var(--ids__density) * 0.5em);
     border-radius: 0.2em;
-
-    @media (width < 767px) {
-      padding-right: calc(var(--ids__density) * 0.75em);
-    }
   }
 
   & code {

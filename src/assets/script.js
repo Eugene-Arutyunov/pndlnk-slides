@@ -19,6 +19,7 @@ class SlidesPlayer {
 
   setup() {
     this.findAndSetupSlides();
+    this.setupSlideNumbers();
     this.setupKeyboardHandlers();
     this.setupHashNavigation();
   }
@@ -135,6 +136,29 @@ class SlidesPlayer {
     // Очищаем ввод
     this.numberInput = "";
     this.numberInputTimer = null;
+  }
+
+  setupSlideNumbers() {
+    // Находим все слайды
+    const allSlides = Array.from(document.querySelectorAll(".slide"));
+
+    allSlides.forEach((slide, index) => {
+      const slideNumber = index + 1;
+      
+      // Проверяем, есть ли уже элемент slide-number
+      const existingNumber = slide.querySelector(".slide-number");
+      
+      if (existingNumber) {
+        // Если элемент существует, просто заполняем его номером
+        existingNumber.textContent = slideNumber;
+      } else {
+        // Если элемента нет, создаем новый и вставляем как первый элемент слайда
+        const slideNumberElement = document.createElement("div");
+        slideNumberElement.className = "slide-number";
+        slideNumberElement.textContent = slideNumber;
+        slide.insertBefore(slideNumberElement, slide.firstChild);
+      }
+    });
   }
 }
 

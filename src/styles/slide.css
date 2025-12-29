@@ -5,12 +5,10 @@
 
 .slide {
   position: relative;
-  display: flex;
   background-color: rgba(var(--ids__surface-RGB), 1);
-  --gap: 1em;
   padding: calc(var(--gap) * 2);
-  gap: var(--gap);
   height: 100vh;
+  --gap: 1em;
 
   @media print {
     page-break-after: always;
@@ -59,125 +57,110 @@
     top: calc(100vw * 9 / 16 - var(--gap) * 2.5);
   }
 
-  & .etalon-header {
-    width: 100%;
+  &.dkcp-base-slide {
     display: flex;
-    --gap: 0.3em;
     gap: var(--gap);
 
-    & .etalon-header-logo {
+    & .dkcp-base-nav-column {
       width: 11em;
-      margin-top: -0.39em;
-      padding: 0.1em;
-      height: 1.1em;
+
       --ids__text-RGB: 255, 105, 105;
+      color: rgba(var(--ids__text-RGB), 1);
+
+      & .logo {
+        margin-top: -0.39em;
+        padding: 0.1em;
+        height: 1.1em;
+      }
+
+      & .product-title {
+        font-size: 1em;
+        font-family: var(--mono);
+        margin-bottom: 1em;
+      }
+
+      & h1 {
+        margin-top: 0;
+        font-size: 1.9em;
+      }
     }
 
-    & .etalon-header-line {
-      flex-grow: 1;
+    & .dkcp-base-slide-content {
       border-top: 0.53em solid rgba(var(--ids__accent-RGB), 1);
-    }
-  }
+      padding-top: 2.22em;
 
-  & .dkcp-base-nav-column {
-    width: 11em;
+      width: 59%;
 
-    --ids__text-RGB: 255, 105, 105;
-    color: rgba(var(--ids__text-RGB), 1);
+      overflow: hidden;
 
-    & .logo {
-      margin-top: -0.39em;
-      padding: 0.1em;
-      height: 1.1em;
+      @media print {
+        overflow: hidden;
+        print-color-adjust: exact;
+      }
     }
 
-    & .product-title {
-      font-size: 1em;
-      font-family: var(--mono);
-      margin-bottom: 1em;
-    }
-
-    & h1 {
+    & h1,
+    h2,
+    h3 {
       margin-top: 0;
       font-size: 1.9em;
-    }
-  }
-
-  & .dkcp-base-slide-content {
-    border-top: 0.53em solid rgba(var(--ids__accent-RGB), 1);
-    padding-top: 2.22em;
-
-    width: 59%;
-
-    overflow: hidden;
-
-    @media print {
-      overflow: hidden;
-      print-color-adjust: exact;
-    }
-  }
-
-  & h1,
-  h2,
-  h3 {
-    margin-top: 0;
-    font-size: 1.9em;
-    line-height: 1;
-
-    @media print {
-      print-color-adjust: exact;
-    }
-  }
-
-  & p {
-    width: 90%;
-    font-size: 1.9em;
-    line-height: 1;
-    margin-bottom: 0.2em;
-  }
-
-  & ul,
-  ol {
-    font-size: 1.9em;
-
-    li {
-      margin-top: 0.2em;
-      margin-bottom: 0.4em;
       line-height: 1;
-    }
-  }
 
-  & table {
-    font-size: 1.4em;
-    border-spacing: 0;
-    margin: 1em 0;
-
-    @media print {
-      print-color-adjust: exact;
+      @media print {
+        print-color-adjust: exact;
+      }
     }
 
-    thead,
-    tbody {
-      tr {
-        & th {
-          text-align: left;
-          border-bottom: 2px solid rgba(var(--ids__text-RGB), 1);
-          padding-bottom: 0.3em;
-        }
+    & p {
+      width: 90%;
+      font-size: 1.9em;
+      line-height: 1;
+      margin-bottom: 0.2em;
+    }
 
-        & td {
-          padding: 0.5em 1em 0.5em 0;
-          border-bottom: 1px solid rgba(var(--ids__text-RGB), 0.5);
-          vertical-align: top;
-          text-align: left;
+    & ul,
+    ol {
+      font-size: 1.9em;
 
-          & p {
+      li {
+        margin-top: 0.2em;
+        margin-bottom: 0.4em;
+        line-height: 1;
+      }
+    }
+
+    & table {
+      font-size: 1.4em;
+      border-spacing: 0;
+      margin: 1em 0;
+
+      @media print {
+        print-color-adjust: exact;
+      }
+
+      thead,
+      tbody {
+        tr {
+          & th {
+            text-align: left;
+            border-bottom: 2px solid rgba(var(--ids__text-RGB), 1);
+            padding-bottom: 0.3em;
           }
-        }
 
-        &:last-child {
           & td {
-            border-bottom: none;
+            padding: 0.5em 1em 0.5em 0;
+            border-bottom: 1px solid rgba(var(--ids__text-RGB), 0.5);
+            vertical-align: top;
+            text-align: left;
+
+            & p {
+            }
+          }
+
+          &:last-child {
+            & td {
+              border-bottom: none;
+            }
           }
         }
       }
