@@ -33,7 +33,7 @@
     }
 
     & h1 {
-      font-size: 4.5em;
+      font-size: 4.3em;
       line-height
     }
 
@@ -42,7 +42,16 @@
       /* line-height: 1.3; */
       font-weight: 450;
       font-family: var(--gothic);
-      margin-bottom: 1em;
+      margin-bottom: 0.5em;
+
+      & mark {
+        background-color: transparent;
+        text-decoration: underline;
+        text-underline-offset: 0.1em;
+        text-decoration-thickness: 0.1em;
+        text-decoration-skip-ink: none;
+        text-decoration-color: rgba(var(--ids__text-RGB), 1);
+      }
     }
   }
 }
