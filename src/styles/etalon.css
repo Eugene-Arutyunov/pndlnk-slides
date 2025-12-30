@@ -24,23 +24,29 @@
 
     & .ids__text-width {
       width: 80%;
-      
     }
 
-    & p, ul, h4 {
+    & p,
+    ul,
+    h4 {
       font-size: 1em;
       font-family: var(--mono);
     }
 
     & h1 {
       font-size: 4.3em;
-      line-height
+      line-height: 0.9;
+      margin-bottom: 0.3em;
+
+      &.L {
+        font-size: 9.5em;
+      }
     }
 
     & .loud {
       font-size: 2em;
-      /* line-height: 1.3; */
-      font-weight: 450;
+      line-height: 1.2;
+      font-weight: 400;
       font-family: var(--gothic);
       margin-bottom: 0.5em;
 
@@ -51,6 +57,36 @@
         text-decoration-thickness: 0.1em;
         text-decoration-skip-ink: none;
         text-decoration-color: rgba(var(--ids__text-RGB), 1);
+      }
+    }
+
+    & table {
+      width: 100%;
+      border-spacing: 0;
+      border-collapse: collapse;
+      margin-bottom: 1em;
+
+      thead {
+        tr {
+          th {
+            width: 50%;
+            text-align: left;
+            border-bottom: 1px solid rgba(var(--ids__text-RGB), 1);
+            padding-bottom: 0.3em;
+            font-weight: 550;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          td {
+            width: 50%;
+            vertical-align: top;
+            text-align: left;
+            padding: 0.2em 1em 0.2em 0;
+          }
+        }
       }
     }
   }
@@ -64,7 +100,7 @@
   font-size: 0.8em;
   padding: 0 0.3em 0 0;
   height: 100%;
-  
+
   & h4 {
     margin-bottom: 0.2em;
   }
@@ -97,5 +133,50 @@
       z-index: -1;
       transition: width 0.3s ease, background-color 0.3s ease;
     }
+  }
+}
+
+.bento-grid {
+  display: flex;
+  flex-wrap: wrap;
+  --gap: 0.1em;
+  gap: var(--gap);
+
+  &.dark {
+    & .bento-grid-item {
+      padding: 0.5em 0.5em 1.2em 0.5em;
+      background-color: rgba(var(--ids__text-RGB), 1);
+      color: rgba(var(--ids__background-RGB), 1);
+    }
+  }
+
+  & .bento-grid-item {
+    &.L {
+      width: 100%;
+    }
+
+    &.M {
+      width: calc(50% - var(--gap) / 2);
+    }
+
+    & h4 {
+      font-size: 0.8em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: var(--mono);
+      margin-bottom: 0.7em;
+      opacity: 0.5;
+    }
+  }
+}
+
+p.formula {
+  margin-bottom: 1em;
+
+  & span {
+    border: 1px solid rgba(var(--ids__background-RGB), 0.5);
+    padding: 0.1em 0.4em 0.2em 0.4em;
+    border-radius: 0.2em;
   }
 }
