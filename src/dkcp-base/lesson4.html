@@ -1,0 +1,542 @@
+{% extends 'layout.html' %} {% set pageTitle = 'База ДКЦП, занятие 4' %} {%
+block content %}
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Курс «База ДКЦП»</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <blockquote class="loud">
+      <p>
+        Курс о том, как договариваться друг с другом о важнейших основах бизнеса
+      </p>
+    </blockquote>
+    <h2>Занятие 4. Критерии сходимости</h2>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Что такое сходимость</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <p>
+      <strong>Сходимость ЦП</strong> — это корректная состыковка блоков модели
+      друг с другом.
+    </p>
+    <p>
+      В ДКЦП нет единственно правильного способа собрать модель, поэтому мы
+      оперируем <strong>принципами</strong> — критериями сходимости.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Два уровня сходимости</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <p><strong>Сходимость ЦП в реальности</strong> — обмен произошёл в реальности.</p>
+    <p><strong>Сходимость ЦП на модели</strong> — модель сошлась по критериям.</p>
+    <div class="ids__space S"></div>
+    <p>
+      Сходимость на модели не гарантирует сходимость на рынке, но существенно
+      повышает вероятность успеха.
+    </p>
+    <p>
+      Если ЦП не сходится на модели — почти наверняка не сойдётся и на рынке.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость 1-2 (КС и МК)</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <p>
+      <strong
+        >Критерии сегментации коррелируют с вероятностью возникновения МК.</strong
+      >
+    </p>
+    <h3>Пример сходимости:</h3>
+    {% set values = [] %} {% set segment = ['Возраст: 16-21 год, живут в крупных
+    городах, студенты ВУЗов/ССУЗов'] %} {% set conflict = ['Хочу сдать сессию,
+    но не хочу ничего учить'] %} {% set artifact = [] %} {% set artifactAttrs =
+    [] %} {% set arguments = [] %} {% set priceConditions = [] %} {% set
+    exchangeConditions = [] %} {% set companyAttrs = [] %} {% set draft = true %}
+    {% include 'dkcp.html' %}
+    <p>
+      <strong>Почему сходится:</strong> среди студентов 16-21 вероятность
+      встретить такой конфликт высокая.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость 1-2 (КС и МК)</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <h3>Пример несходимости:</h3>
+    {% set values = [] %} {% set segment = ['Пенсионеры 65+'] %} {% set conflict
+    = ['Хочу расти в карьере, но везде требуют знания нейросетей и вайбкодинга,
+    а у меня их нет'] %} {% set artifact = [] %} {% set artifactAttrs = [] %} {%
+    set arguments = [] %} {% set priceConditions = [] %} {% set
+    exchangeConditions = [] %} {% set companyAttrs = [] %} {% set draft = true %}
+    {% include 'dkcp.html' %}
+    <p>
+      <strong>Почему не сходится:</strong> пенсионеры уже не на рынке труда и не
+      стремятся к карьерному росту.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость 1-4 (КС и атрибуты)</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <p>
+      <strong
+        >Атрибуты сформулированы на языке, понятном клиентскому сегменту.</strong
+      >
+    </p>
+    <h3>Пример сходимости:</h3>
+    {% set values = [] %} {% set segment = ['Мамы с детьми'] %} {% set conflict
+    = [] %} {% set artifact = ['Мобильное приложение для отслеживания детей'] %}
+    {% set artifactAttrs = ['Показывает, где ребёнок с точностью до метра',
+    'Надёжное'] %} {% set arguments = [] %} {% set priceConditions = [] %} {%
+    set exchangeConditions = [] %} {% set companyAttrs = [] %} {% set draft =
+    true %} {% include 'dkcp.html' %}
+    <p>
+      <strong>Почему сходится:</strong> язык понятный, описывает результат, а не
+      технологию.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость 1-4 (КС и атрибуты)</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <h3>Пример несходимости:</h3>
+    {% set values = [] %} {% set segment = ['Мамы с детьми'] %} {% set conflict
+    = [] %} {% set artifact = ['Мобильное приложение для отслеживания детей'] %}
+    {% set artifactAttrs = ['Использует триангуляцию сигналов'] %} {% set
+    arguments = [] %} {% set priceConditions = [] %} {% set exchangeConditions =
+    [] %} {% set companyAttrs = [] %} {% set draft = true %} {% include
+    'dkcp.html' %}
+    <p>
+      <strong>Почему не сходится:</strong> «триангуляция сигналов» — непонятный
+      технический жаргон для мам.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость 2-4 (МК и атрибуты)</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <p>
+      <strong>Это центральная сходимость ЦП.</strong> Чаще всего ЦП не сходятся
+      именно здесь.
+    </p>
+    <p>
+      Все конфликты должны быть закрыты атрибутами, и атрибуты действительно
+      разрешают конфликт.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Три способа разрешить конфликт</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <table>
+      <thead>
+        <tr>
+          <th>Способ</th>
+          <th>Что происходит</th>
+          <th>Пример</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Устранить препятствие</strong></td>
+          <td>Раньше мешало, а сейчас не мешает</td>
+          <td>
+            МК: «Хочу поехать на работу на машине, но свободных мест на парковке
+            нет»<br />Решение: Многоуровневая парковка — препятствие устранено
+          </td>
+        </tr>
+        <tr>
+          <td><strong>2. Обойти препятствие</strong></td>
+          <td>Препятствие осталось, но оно больше не мешает</td>
+          <td>
+            МК: «Хочу поехать на работу на машине, но свободных мест на парковке
+            нет»<br />Решение: Корпоративный шаттл — парковок не прибавилось, но
+            можно ехать без машины
+          </td>
+        </tr>
+        <tr>
+          <td><strong>3. Усилить хотелку</strong></td>
+          <td>Добавили мотивации, и теперь справляется с препятствием</td>
+          <td>
+            МК: «Хочу поехать на работу на машине, но свободных мест на парковке
+            нет»<br />Решение: Бонус за приход до 8:00 — мотивирован приезжать
+            рано, когда есть места
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость 2-4 (МК и атрибуты)</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <h3>Пример несходимости:</h3>
+    {% set values = [] %} {% set segment = [] %} {% set conflict = ['Хочу
+    похудеть, но не могу отказаться от вкусной еды'] %} {% set artifact =
+    ['Приложение с медитациями на похудение'] %} {% set artifactAttrs = ['15
+    минут в день', 'Голосовое сопровождение', 'Программа на 30 дней'] %} {% set
+    arguments = [] %} {% set priceConditions = [] %} {% set exchangeConditions =
+    [] %} {% set companyAttrs = [] %} {% set draft = true %} {% include
+    'dkcp.html' %}
+    <p><strong>Почему не сходится:</strong></p>
+    <ul>
+      <li>Не устраняет препятствие (тяга к еде остаётся)</li>
+      <li>Не даёт обойти (не предлагает альтернативную еду)</li>
+      <li>
+        Не усиливает хотелку достаточно (медитация не создаёт мотивацию сильнее
+        тяги к еде)
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость 4-3 (атрибуты и артефакт)</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <p><strong>Не существует атрибутов без носителей артефакта.</strong></p>
+    <p>Для каждого свойства нужно предъявить, за счёт чего оно достигается.</p>
+    <h3>Пример сходимости:</h3>
+    {% set values = [] %} {% set segment = [] %} {% set conflict = [] %} {% set
+    artifact = ['Видеолекции по маркетингу', 'Сопровождение куратора'] %} {% set
+    artifactAttrs = ['Структурированные', 'Персонализированные (куратор
+    адаптирует задания под ваш бизнес)'] %} {% set arguments = [] %} {% set
+    priceConditions = [] %} {% set exchangeConditions = [] %} {% set companyAttrs
+    = [] %} {% set draft = true %} {% include 'dkcp.html' %}
+    <p>
+      <strong>Почему сходится:</strong> есть носитель — куратор, который
+      персонализирует обучение.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость 4-3 (атрибуты и артефакт)</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <h3>Пример несходимости:</h3>
+    {% set values = [] %} {% set segment = [] %} {% set conflict = [] %} {% set
+    artifact = ['Видеолекции по маркетингу'] %} {% set artifactAttrs =
+    ['Структурированные', 'Персонализированные'] %} {% set arguments = [] %} {%
+    set priceConditions = [] %} {% set exchangeConditions = [] %} {% set
+    companyAttrs = [] %} {% set draft = true %} {% include 'dkcp.html' %}
+    <p>
+      <strong>Почему не сходится:</strong> «Структурированные» — понятно (про
+      содержание и последовательность). «Персонализированные» — непонятно. Что
+      персонализируется? Видео одно для всех, задания одинаковые. Нет носителя
+      этого свойства.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость 2-5 (МК и вклад клиента)</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <p><strong>Материальный вклад не превышает ущерб от МК.</strong></p>
+    <p>
+      Цена должна быть меньше издержек, которые клиент терпит от конфликта.
+    </p>
+    <h3>Пример сходимости:</h3>
+    {% set values = [] %} {% set segment = [] %} {% set conflict = ['Уезжая на
+    отдых, постоянно переживаю, не случился ли в квартире пожар'] %} {% set
+    artifact = ['Камера с датчиком дыма'] %} {% set artifactAttrs = [] %} {% set
+    arguments = [] %} {% set priceConditions = ['5 000 руб', 'Установка 5
+    минут'] %} {% set exchangeConditions = [] %} {% set companyAttrs = [] %} {%
+    set draft = true %} {% include 'dkcp.html' %}
+    <p>
+      <strong>Почему сходится:</strong> цена сопоставима с издержками
+      беспокойства.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость 2-5 (МК и вклад клиента)</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <h3>Пример несходимости:</h3>
+    {% set values = [] %} {% set segment = [] %} {% set conflict = ['Уезжая на
+    отдых, постоянно переживаю, не случился ли в квартире пожар'] %} {% set
+    artifact = ['Система умного дома'] %} {% set artifactAttrs = [] %} {% set
+    arguments = [] %} {% set priceConditions = ['350 000 руб', 'Установка 2-3
+    дня'] %} {% set exchangeConditions = [] %} {% set companyAttrs = [] %} {% set
+    draft = true %} {% include 'dkcp.html' %}
+    <p>
+      <strong>Почему не сходится:</strong> ущерб — немного нервов + большой ущерб
+      × очень низкая вероятность. Цена несопоставима.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость 1-5 (КС и вклад клиента)</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <p>
+      <strong
+        >Представители КС должны быть способны осуществить нематериальный
+        вклад.</strong
+      >
+    </p>
+    <h3>Пример сходимости:</h3>
+    {% set values = [] %} {% set segment = ['Блогеры, технически грамотные
+    пользователи'] %} {% set conflict = [] %} {% set artifact = ['Блогодвижок
+    Эгея'] %} {% set artifactAttrs = [] %} {% set arguments = [] %} {% set
+    priceConditions = ['12 000 руб', 'Самостоятельная установка на сервер'] %} {%
+    set exchangeConditions = [] %} {% set companyAttrs = [] %} {% set draft =
+    true %} {% include 'dkcp.html' %}
+    <p>
+      <strong>Почему сходится:</strong> технически грамотные люди способны
+      поставить движок сами.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость 1-5 (КС и вклад клиента)</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <h3>Пример несходимости:</h3>
+    {% set values = [] %} {% set segment = ['Владельцы кофеен и салонов
+    красоты'] %} {% set conflict = [] %} {% set artifact = ['CRM система'] %} {%
+    set artifactAttrs = ['Интегрируется по API с платежными системами'] %} {% set
+    arguments = [] %} {% set priceConditions = ['15 000 руб', 'Самостоятельная
+    настройка через API'] %} {% set exchangeConditions = [] %} {% set
+    companyAttrs = [] %} {% set draft = true %} {% include 'dkcp.html' %}
+    <p>
+      <strong>Почему не сходится:</strong> у них нет программистов, сами не
+      умеют работать с API, бюджета нанять специалиста нет.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость по ценностям</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <h3>8-1: Ценность должна присутствовать высоко в системе ценностей клиента</h3>
+    {% set values = ['Соревновательность'] %} {% set segment = ['Мамы с
+    маленькими детьми'] %} {% set conflict = [] %} {% set artifact = [] %} {% set
+    artifactAttrs = [] %} {% set arguments = [] %} {% set priceConditions = [] %}
+    {% set exchangeConditions = [] %} {% set companyAttrs = [] %} {% set draft =
+    true %} {% include 'dkcp.html' %}
+    <p>
+      <strong>Не сходится:</strong> в системе ценностей мам на первом месте дом,
+      семья, безопасность.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость по ценностям</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <h3>8-3: Категория артефакта не должна противоречить ценности</h3>
+    {% set values = ['Безопасность'] %} {% set segment = [] %} {% set conflict =
+    [] %} {% set artifact = ['Ставки на спорт'] %} {% set artifactAttrs = [] %}
+    {% set arguments = [] %} {% set priceConditions = [] %} {% set
+    exchangeConditions = [] %} {% set companyAttrs = [] %} {% set draft = true %}
+    {% include 'dkcp.html' %}
+    <p>
+      <strong>Не сходится:</strong> ставки с безопасностью ассоциируются очень
+      сомнительно.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Сходимость по ценностям</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <h3>8-7: Атрибуты компании должны подчёркивать ценность</h3>
+    {% set values = ['Надёжность'] %} {% set segment = [] %} {% set conflict =
+    [] %} {% set artifact = [] %} {% set artifactAttrs = [] %} {% set arguments =
+    [] %} {% set priceConditions = [] %} {% set exchangeConditions = [] %} {% set
+    companyAttrs = ['Криптостартап', 'Управляем 1000+ криптокошельками'] %} {% set
+    draft = true %} {% include 'dkcp.html' %}
+    <p>
+      <strong>Не сходится:</strong> крипта с надёжностью пока не ассоциируется.
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Как этим пользоваться</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <p>
+      Полностью сходящееся ЦП сделать сразу очень сложно. Применяем критерии по
+      логике <strong>«столько, сколько можно»</strong>.
+    </p>
+    <div class="ids__space S"></div>
+    <p><strong>Если видите несходимость:</strong></p>
+    <ol>
+      <li>
+        Обсудите с клиентом при брифинге — возможно, он изменит ответ, увидев
+        всю картину
+      </li>
+      <li>Если не получилось устранить — поставьте как задачу на исследование</li>
+      <li>
+        Если совсем не сходится и изменить нельзя — держите в голове как
+        рисковое место
+      </li>
+    </ol>
+    <div class="ids__space S"></div>
+    <p>
+      <strong
+        >Когда клиент видит всю модель в контексте, его мнение об отдельных
+        блоках часто меняется — это нормально и для этого создан ДКЦП.</strong
+      >
+    </p>
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Полностью сходящееся ЦП</h1>
+  </div>
+  <div class="dkcp-base-slide-content" style="padding-top: 0.3em">
+    {% set values = ['Безопасность'] %} {% set segment = ['Мамы с детьми 6-12
+    лет, живут в городах 500К+, работают полный день'] %} {% set conflict =
+    ['Хочу знать, где ребёнок после школы, но не могу постоянно звонить и
+    контролировать'] %} {% set artifact = ['Мобильное приложение для
+    отслеживания детей (GPS-трекер, карта, история перемещений, уведомления)'] %}
+    {% set artifactAttrs = ['Показывает местоположение ребёнка с точностью до
+    метра', 'Работает в фоновом режиме', 'Не разряжает телефон'] %} {% set
+    arguments = ['Мамы с детьми школьного возраста переживают за безопасность',
+    'Постоянные звонки раздражают ребёнка и не всегда эффективны'] %} {% set
+    priceConditions = ['490 руб/мес', 'Установить приложение на телефон
+    ребёнка'] %} {% set exchangeConditions = ['Подписка оформляется онлайн',
+    'Первые 7 дней бесплатно'] %} {% set companyAttrs = ['Работаем 5 лет', 'Более
+    100 000 семей используют приложение', 'Данные хранятся только на вашем
+    устройстве'] %} {% set draft = true %} {% include 'dkcp.html' %}
+  </div>
+</div>
+
+<div class="slide dkcp-base-slide">
+  <div class="dkcp-base-nav-column">
+    <div class="logo">{% include 'pndlnk.html' %}</div>
+    <p class="product-title">База ДКЦП</p>
+    <h1>Полностью сходящееся ЦП</h1>
+  </div>
+  <div class="dkcp-base-slide-content">
+    <h3>Проверка всех сходимостей:</h3>
+    <ul>
+      <li>
+        <strong>1-2:</strong> КС (мамы с детьми) × МК (переживают за ребёнка) —
+        коррелирует
+      </li>
+      <li>
+        <strong>1-4:</strong> Атрибуты на понятном языке («показывает
+        местоположение», а не «триангуляция»)
+      </li>
+      <li>
+        <strong>2-4:</strong> Атрибуты закрывают конфликт (устраняют
+        необходимость звонить)
+      </li>
+      <li>
+        <strong>4-3:</strong> Каждый атрибут имеет носитель в артефакте
+        (GPS-трекер, оптимизация)
+      </li>
+      <li><strong>2-5:</strong> Цена 490₽ сопоставима с ценностью спокойствия</li>
+      <li><strong>1-5:</strong> Мама способна установить приложение</li>
+      <li>
+        <strong>8-1:</strong> «Безопасность» высоко в системе ценностей мам
+      </li>
+      <li>
+        <strong>8-3:</strong> Приложение для отслеживания не противоречит
+        безопасности
+      </li>
+      <li>
+        <strong>8-7:</strong> Атрибуты компании подчёркивают надёжность и
+        безопасность
+      </li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}
