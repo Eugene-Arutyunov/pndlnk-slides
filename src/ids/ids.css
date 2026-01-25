@@ -7,12 +7,16 @@
     text-underline-offset: 0.2em;
     text-decoration-skip-ink: none;
     text-decoration-color: rgba(var(--ids__link-RGB), 0.2);
-    transition: color 0.5s ease, text-decoration 0.5s ease;
+    transition:
+      color 0.5s ease,
+      text-decoration 0.5s ease;
 
     &:hover {
       color: rgb(var(--ids__hover-RGB));
       text-decoration-color: rgba(var(--ids__hover-RGB), 0.2);
-      transition: color 0s ease, text-decoration 0s ease;
+      transition:
+        color 0s ease,
+        text-decoration 0s ease;
     }
   }
 
@@ -119,12 +123,12 @@
 
   & ul,
   & ol {
-    margin: 0 0 calc(var(--ids__density) * 0.75em) 0;
+    margin: 0 0 calc(var(--ids__density) * 0.5em) 0;
     padding: 0;
 
     & li {
       position: relative;
-      margin-bottom: calc(var(--ids__density) * 0.5em);
+      margin-bottom: calc(var(--ids__density) * 0.3em);
     }
   }
 

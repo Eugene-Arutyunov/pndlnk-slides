@@ -28,15 +28,16 @@
 
     & p,
     ul,
+    ol,
     h4 {
       font-size: 1em;
       font-family: var(--mono);
     }
 
     & h1 {
-      font-size: 4.3em;
+      font-size: 3.7em;
       line-height: 0.9;
-      margin-bottom: 0.3em;
+      margin-bottom: 0.15em;
 
       &.L {
         font-size: 9.5em;
@@ -45,10 +46,10 @@
 
     & .loud {
       font-size: 2em;
-      line-height: 1.2;
+      line-height: 1.1;
       font-weight: 400;
       font-family: var(--gothic);
-      margin-bottom: 0.5em;
+      margin-bottom: 0.3em;
 
       & mark {
         background-color: transparent;
@@ -131,7 +132,9 @@
       width: var(--bar-width);
       background-color: var(--bar-color);
       z-index: -1;
-      transition: width 0.3s ease, background-color 0.3s ease;
+      transition:
+        width 0.3s ease,
+        background-color 0.3s ease;
     }
   }
 }
@@ -144,7 +147,7 @@
 
   &.dark {
     & .bento-grid-item {
-      padding: 0.5em 0.5em 1.2em 0.5em;
+      padding: 0.5em 1em 0.7em 0.5em;
       background-color: rgba(var(--ids__text-RGB), 1);
       color: rgba(var(--ids__background-RGB), 1);
     }
@@ -165,7 +168,7 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       font-family: var(--mono);
-      margin-bottom: 0.7em;
+      margin-bottom: 0.3em;
       opacity: 0.5;
     }
   }
