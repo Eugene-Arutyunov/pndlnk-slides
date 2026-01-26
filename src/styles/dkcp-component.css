@@ -255,3 +255,31 @@
     }
   }
 }
+
+/* Некорректные блоки */
+.dkcp-component--draft {
+  & .dkcp-top--invalid {
+    border-left-color: rgba(var(--ids__accent-RGB), 1);
+    filter: drop-shadow(0px -2px 0px rgba(var(--ids__accent-RGB), 1));
+
+    @media (width < 767px) {
+      filter: drop-shadow(0px -1px 0px rgba(var(--ids__accent-RGB), 1));
+    }
+  }
+
+  & .dkcp-block--invalid {
+    border-color: rgba(var(--ids__accent-RGB), 1);
+
+    @media (width < 767px) {
+      border-color: rgba(var(--ids__accent-RGB), 1);
+    }
+
+    & .dkcp-digit {
+      color: rgba(var(--ids__accent-RGB), 1);
+    }
+
+    & .dkcp-title {
+      color: rgba(var(--ids__accent-RGB), 1);
+    }
+  }
+}

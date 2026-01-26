@@ -1,5 +1,5 @@
 {% extends 'layout.html' %} {% set pageTitle = 'База ДКЦП, занятие 4' %} {%
-block content %}
+import 'dkcp.html' as dkcp %} {% block content %}
 
 <div class="slide dkcp-base-slide">
   <div class="dkcp-base-nav-column">
@@ -74,12 +74,19 @@ block content %}
       >
     </p>
 
-    {% set values = [] %} {% set segment = ['Возраст: 16-21 год, живут в крупных
-    городах, студенты ВУЗов/ССУЗов'] %} {% set conflict = ['Хочу сдать сессию,
-    но не хочу ничего учить'] %} {% set artifact = [] %} {% set artifactAttrs =
-    [] %} {% set arguments = [] %} {% set priceConditions = [] %} {% set
-    exchangeConditions = [] %} {% set companyAttrs = [] %} {% set draft = true
-    %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=[],
+      segment=['Возраст: 16-21 год, живут в крупных городах, студенты ВУЗов/ССУЗов'],
+      conflict=['Хочу сдать сессию, но не хочу ничего учить'],
+      artifact=[],
+      artifactAttrs=[],
+      arguments=[],
+      priceConditions=[],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[]
+    ) }}
     <p>
       <strong>Почему сходится:</strong> среди студентов 16-21 вероятность
       встретить такой конфликт высокая.
@@ -94,12 +101,19 @@ block content %}
     <h1>Сходимость 1-2 (КС и МК)</h1>
   </div>
   <div class="dkcp-base-slide-content">
-    {% set values = [] %} {% set segment = ['Пенсионеры 65+'] %} {% set conflict
-    = ['Хочу расти в карьере, но везде требуют знания нейросетей и вайбкодинга,
-    а у меня их нет'] %} {% set artifact = [] %} {% set artifactAttrs = [] %} {%
-    set arguments = [] %} {% set priceConditions = [] %} {% set
-    exchangeConditions = [] %} {% set companyAttrs = [] %} {% set draft = true
-    %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=[],
+      segment=['Пенсионеры 65+'],
+      conflict=['Хочу расти в карьере, но везде требуют знания нейросетей и вайбкодинга, а у меня их нет'],
+      artifact=[],
+      artifactAttrs=[],
+      arguments=[],
+      priceConditions=[],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[1, 2]
+    ) }}
     <p>
       <strong>Почему не сходится:</strong> пенсионеры уже не на рынке труда и не
       стремятся к карьерному росту.
@@ -121,12 +135,19 @@ block content %}
       >
     </p>
 
-    {% set values = [] %} {% set segment = ['Мамы с детьми'] %} {% set conflict
-    = [] %} {% set artifact = ['Мобильное приложение для отслеживания детей'] %}
-    {% set artifactAttrs = ['Показывает, где ребёнок с точностью до метра',
-    'Надёжное'] %} {% set arguments = [] %} {% set priceConditions = [] %} {%
-    set exchangeConditions = [] %} {% set companyAttrs = [] %} {% set draft =
-    true %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=[],
+      segment=['Мамы с детьми'],
+      conflict=[],
+      artifact=['Мобильное приложение для отслеживания детей'],
+      artifactAttrs=['Показывает, где ребёнок с точностью до метра', 'Надёжное'],
+      arguments=[],
+      priceConditions=[],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[]
+    ) }}
     <p>
       <strong>Почему сходится:</strong> язык понятный, описывает результат, а не
       технологию.
@@ -141,12 +162,19 @@ block content %}
     <h1>Сходимость 1-4 (КС и атрибуты)</h1>
   </div>
   <div class="dkcp-base-slide-content">
-    {% set values = [] %} {% set segment = ['Мамы с детьми'] %} {% set conflict
-    = [] %} {% set artifact = ['Мобильное приложение для отслеживания детей'] %}
-    {% set artifactAttrs = ['Использует триангуляцию сигналов'] %} {% set
-    arguments = [] %} {% set priceConditions = [] %} {% set exchangeConditions =
-    [] %} {% set companyAttrs = [] %} {% set draft = true %} {% include
-    'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=[],
+      segment=['Мамы с детьми'],
+      conflict=[],
+      artifact=['Мобильное приложение для отслеживания детей'],
+      artifactAttrs=['Использует триангуляцию сигналов'],
+      arguments=[],
+      priceConditions=[],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[1, 4]
+    ) }}
     <p>
       <strong>Почему не сходится:</strong> «триангуляция сигналов» — непонятный
       технический жаргон для мам.
@@ -265,13 +293,19 @@ block content %}
     <h1>Сходимость 2-4 (МК и атрибуты)</h1>
   </div>
   <div class="dkcp-base-slide-content">
-    {% set values = [] %} {% set segment = [] %} {% set conflict = ['Хочу
-    похудеть, но не могу отказаться от вкусной еды'] %} {% set artifact =
-    ['Приложение с медитациями на похудение'] %} {% set artifactAttrs = ['15
-    минут в день', 'Голосовое сопровождение', 'Программа на 30 дней'] %} {% set
-    arguments = [] %} {% set priceConditions = [] %} {% set exchangeConditions =
-    [] %} {% set companyAttrs = [] %} {% set draft = true %} {% include
-    'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=[],
+      segment=[],
+      conflict=['Хочу похудеть, но не могу отказаться от вкусной еды'],
+      artifact=['Приложение с медитациями на похудение'],
+      artifactAttrs=['15 минут в день', 'Голосовое сопровождение', 'Программа на 30 дней'],
+      arguments=[],
+      priceConditions=[],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[2, 4]
+    ) }}
     <p><strong>Почему не сходится:</strong></p>
     <ul>
       <li>Не устраняет препятствие (тяга к еде остаётся)</li>
@@ -296,12 +330,19 @@ block content %}
       каждого свойства нужно предъявить, за счёт чего оно достигается.
     </p>
 
-    {% set values = [] %} {% set segment = [] %} {% set conflict = [] %} {% set
-    artifact = ['Видеолекции по маркетингу', 'Сопровождение куратора'] %} {% set
-    artifactAttrs = ['Структурированные', 'Персонализированные (куратор
-    адаптирует задания под ваш бизнес)'] %} {% set arguments = [] %} {% set
-    priceConditions = [] %} {% set exchangeConditions = [] %} {% set
-    companyAttrs = [] %} {% set draft = true %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=[],
+      segment=[],
+      conflict=[],
+      artifact=['Видеолекции по маркетингу', 'Сопровождение куратора'],
+      artifactAttrs=['Структурированные', 'Персонализированные (куратор адаптирует задания под ваш бизнес)'],
+      arguments=[],
+      priceConditions=[],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[]
+    ) }}
     <p>
       <strong>Почему сходится:</strong> есть носитель — куратор, который
       персонализирует обучение.
@@ -316,11 +357,19 @@ block content %}
     <h1>Сходимость 4-3 (атрибуты и артефакт)</h1>
   </div>
   <div class="dkcp-base-slide-content">
-    {% set values = [] %} {% set segment = [] %} {% set conflict = [] %} {% set
-    artifact = ['Видеолекции по маркетингу'] %} {% set artifactAttrs =
-    ['Структурированные', 'Персонализированные'] %} {% set arguments = [] %} {%
-    set priceConditions = [] %} {% set exchangeConditions = [] %} {% set
-    companyAttrs = [] %} {% set draft = true %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=[],
+      segment=[],
+      conflict=[],
+      artifact=['Видеолекции по маркетингу'],
+      artifactAttrs=['Структурированные', 'Персонализированные'],
+      arguments=[],
+      priceConditions=[],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[4, 3]
+    ) }}
     <p>
       <strong>Почему не сходится:</strong> «Структурированные» — понятно (про
       содержание и последовательность). «Персонализированные» — непонятно. Что
@@ -342,12 +391,19 @@ block content %}
       быть меньше издержек, которые клиент терпит от конфликта.
     </p>
 
-    {% set values = [] %} {% set segment = [] %} {% set conflict = ['Уезжая на
-    отдых, постоянно переживаю, не случился ли в квартире пожар'] %} {% set
-    artifact = ['Камера с датчиком дыма'] %} {% set artifactAttrs = [] %} {% set
-    arguments = [] %} {% set priceConditions = ['5 000 руб', 'Установка 5
-    минут'] %} {% set exchangeConditions = [] %} {% set companyAttrs = [] %} {%
-    set draft = true %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=[],
+      segment=[],
+      conflict=['Уезжая на отдых, постоянно переживаю, не случился ли в квартире пожар'],
+      artifact=['Камера с датчиком дыма'],
+      artifactAttrs=[],
+      arguments=[],
+      priceConditions=['5 000 руб', 'Установка 5 минут'],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[]
+    ) }}
     <p>
       <strong>Почему сходится:</strong> цена сопоставима с издержками
       беспокойства.
@@ -362,12 +418,19 @@ block content %}
     <h1>Сходимость 2-5 (МК и вклад клиента)</h1>
   </div>
   <div class="dkcp-base-slide-content">
-    {% set values = [] %} {% set segment = [] %} {% set conflict = ['Уезжая на
-    отдых, постоянно переживаю, не случился ли в квартире пожар'] %} {% set
-    artifact = ['Система умного дома'] %} {% set artifactAttrs = [] %} {% set
-    arguments = [] %} {% set priceConditions = ['350 000 руб', 'Установка 2-3
-    дня'] %} {% set exchangeConditions = [] %} {% set companyAttrs = [] %} {%
-    set draft = true %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=[],
+      segment=[],
+      conflict=['Уезжая на отдых, постоянно переживаю, не случился ли в квартире пожар'],
+      artifact=['Система умного дома'],
+      artifactAttrs=[],
+      arguments=[],
+      priceConditions=['350 000 руб', 'Установка 2-3 дня'],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[2, 5]
+    ) }}
     <p>
       <strong>Почему не сходится:</strong> ущерб — немного нервов + большой
       ущерб × очень низкая вероятность. Цена несопоставима.
@@ -389,12 +452,19 @@ block content %}
       >
     </p>
 
-    {% set values = [] %} {% set segment = ['Блогеры, технически грамотные
-    пользователи'] %} {% set conflict = [] %} {% set artifact = ['Блогодвижок
-    Эгея'] %} {% set artifactAttrs = [] %} {% set arguments = [] %} {% set
-    priceConditions = ['12 000 руб', 'Самостоятельная установка на сервер'] %}
-    {% set exchangeConditions = [] %} {% set companyAttrs = [] %} {% set draft =
-    true %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=[],
+      segment=['Блогеры, технически грамотные пользователи'],
+      conflict=[],
+      artifact=['Блогодвижок Эгея'],
+      artifactAttrs=[],
+      arguments=[],
+      priceConditions=['12 000 руб', 'Самостоятельная установка на сервер'],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[]
+    ) }}
     <p>
       <strong>Почему сходится:</strong> технически грамотные люди способны
       поставить движок сами.
@@ -409,12 +479,19 @@ block content %}
     <h1>Сходимость 1-5 (КС и вклад клиента)</h1>
   </div>
   <div class="dkcp-base-slide-content">
-    {% set values = [] %} {% set segment = ['Владельцы кофеен и салонов
-    красоты'] %} {% set conflict = [] %} {% set artifact = ['CRM система'] %} {%
-    set artifactAttrs = ['Интегрируется по API с платежными системами'] %} {%
-    set arguments = [] %} {% set priceConditions = ['15 000 руб',
-    'Самостоятельная настройка через API'] %} {% set exchangeConditions = [] %}
-    {% set companyAttrs = [] %} {% set draft = true %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=[],
+      segment=['Владельцы кофеен и салонов красоты'],
+      conflict=[],
+      artifact=['CRM система'],
+      artifactAttrs=['Интегрируется по API с платежными системами'],
+      arguments=[],
+      priceConditions=['15 000 руб', 'Самостоятельная настройка через API'],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[1, 5]
+    ) }}
     <p>
       <strong>Почему не сходится:</strong> у них нет программистов, сами не
       умеют работать с API, бюджета нанять специалиста нет.
@@ -432,11 +509,19 @@ block content %}
     <h3>
       8-1: Ценность должна присутствовать высоко в системе ценностей клиента
     </h3>
-    {% set values = ['Соревновательность'] %} {% set segment = ['Мамы с
-    маленькими детьми'] %} {% set conflict = [] %} {% set artifact = [] %} {%
-    set artifactAttrs = [] %} {% set arguments = [] %} {% set priceConditions =
-    [] %} {% set exchangeConditions = [] %} {% set companyAttrs = [] %} {% set
-    draft = true %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=['Соревновательность'],
+      segment=['Мамы с маленькими детьми'],
+      conflict=[],
+      artifact=[],
+      artifactAttrs=[],
+      arguments=[],
+      priceConditions=[],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[8, 1]
+    ) }}
     <p>
       <strong>Не сходится:</strong> в системе ценностей мам на первом месте дом,
       семья, безопасность.
@@ -452,11 +537,19 @@ block content %}
   </div>
   <div class="dkcp-base-slide-content">
     <h3>8-3: Категория артефакта не должна противоречить ценности</h3>
-    {% set values = ['Безопасность'] %} {% set segment = [] %} {% set conflict =
-    [] %} {% set artifact = ['Ставки на спорт'] %} {% set artifactAttrs = [] %}
-    {% set arguments = [] %} {% set priceConditions = [] %} {% set
-    exchangeConditions = [] %} {% set companyAttrs = [] %} {% set draft = true
-    %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=['Безопасность'],
+      segment=[],
+      conflict=[],
+      artifact=['Ставки на спорт'],
+      artifactAttrs=[],
+      arguments=[],
+      priceConditions=[],
+      exchangeConditions=[],
+      companyAttrs=[],
+      draft=true,
+      invalidBlocks=[8, 3]
+    ) }}
     <p>
       <strong>Не сходится:</strong> ставки с безопасностью ассоциируются очень
       сомнительно.
@@ -472,11 +565,19 @@ block content %}
   </div>
   <div class="dkcp-base-slide-content">
     <h3>8-7: Атрибуты компании должны подчёркивать ценность</h3>
-    {% set values = ['Надёжность'] %} {% set segment = [] %} {% set conflict =
-    [] %} {% set artifact = [] %} {% set artifactAttrs = [] %} {% set arguments
-    = [] %} {% set priceConditions = [] %} {% set exchangeConditions = [] %} {%
-    set companyAttrs = ['Криптостартап', 'Управляем 1000+ криптокошельками'] %}
-    {% set draft = true %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=['Надёжность'],
+      segment=[],
+      conflict=[],
+      artifact=[],
+      artifactAttrs=[],
+      arguments=[],
+      priceConditions=[],
+      exchangeConditions=[],
+      companyAttrs=['Криптостартап', 'Управляем 1000+ криптокошельками'],
+      draft=true,
+      invalidBlocks=[8, 7]
+    ) }}
     <p>
       <strong>Не сходится:</strong> крипта с надёжностью пока не ассоциируется.
     </p>
@@ -545,20 +646,19 @@ block content %}
     <h1>Полностью сходящееся ЦП</h1>
   </div>
   <div class="dkcp-base-slide-content" style="padding-top: 0.3em">
-    {% set values = ['Безопасность'] %} {% set segment = ['Мамы с детьми 6-12
-    лет, живут в городах 500К+, работают полный день'] %} {% set conflict =
-    ['Хочу знать, где ребёнок после школы, но не могу постоянно звонить и
-    контролировать'] %} {% set artifact = ['Мобильное приложение для
-    отслеживания детей (GPS-трекер, карта, история перемещений, уведомления)']
-    %} {% set artifactAttrs = ['Показывает местоположение ребёнка с точностью до
-    метра', 'Работает в фоновом режиме', 'Не разряжает телефон'] %} {% set
-    arguments = ['Мамы с детьми школьного возраста переживают за безопасность',
-    'Постоянные звонки раздражают ребёнка и не всегда эффективны'] %} {% set
-    priceConditions = ['490 руб/мес', 'Установить приложение на телефон
-    ребёнка'] %} {% set exchangeConditions = ['Подписка оформляется онлайн',
-    'Первые 7 дней бесплатно'] %} {% set companyAttrs = ['Работаем 5 лет',
-    'Более 100 000 семей используют приложение', 'Данные хранятся только на
-    вашем устройстве'] %} {% set draft = true %} {% include 'dkcp.html' %}
+    {{ dkcp.dkcp(
+      values=['Безопасность'],
+      segment=['Мамы с детьми 6-12 лет, живут в городах 500К+, работают полный день'],
+      conflict=['Хочу знать, где ребёнок после школы, но не могу постоянно звонить и контролировать'],
+      artifact=['Мобильное приложение для отслеживания детей (GPS-трекер, карта, история перемещений, уведомления)'],
+      artifactAttrs=['Показывает местоположение ребёнка с точностью до метра', 'Работает в фоновом режиме', 'Не разряжает телефон'],
+      arguments=['Мамы с детьми школьного возраста переживают за безопасность', 'Постоянные звонки раздражают ребёнка и не всегда эффективны'],
+      priceConditions=['490 руб/мес', 'Установить приложение на телефон ребёнка'],
+      exchangeConditions=['Подписка оформляется онлайн', 'Первые 7 дней бесплатно'],
+      companyAttrs=['Работаем 5 лет', 'Более 100 000 семей используют приложение', 'Данные хранятся только на вашем устройстве'],
+      draft=true,
+      invalidBlocks=[]
+    ) }}
   </div>
 </div>
 
