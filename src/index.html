@@ -1,24 +1,24 @@
 {% extends 'layout.html' %} {% set pageTitle = 'Понедельник' %} {% block content
 %}
-
-<div class="slide">
-  <div class="dkcp-base-nav-column">
-    <div class="slide-number">1</div>
-    <div class="logo">{% include 'pndlnk.html' %}</div>
-    <p class="product-title">База ДКЦП</p>
-    <h1>Тут заголовок</h1>
-  </div>
-  <div class="dkcp-base-slide-content"></div>
-</div>
-
-<div class="slide">
-  <div class="dkcp-base-nav-column">
-    <div class="slide-number">2</div>
-    <div class="logo">{% include 'pndlnk.html' %}</div>
-    <p class="product-title">База ДКЦП</p>
-    <h1>Тут заголовок</h1>
-  </div>
-  <div class="dkcp-base-slide-content"></div>
+<div class="ids__space L"></div>
+<div class="ids__wrapper">
+  <ul class="dkcp-slides-list">
+    <li>
+      <a href="/dkcp-base/lesson1">База ДКЦП — 1</a>
+    </li>
+    <li>
+      <a href="/dkcp-base/lesson2">База ДКЦП — 2</a>
+    </li>
+    <li>
+      <a href="/dkcp-base/lesson3">База ДКЦП — 3</a>
+    </li>
+    <li>
+      <a href="/dkcp-base/lesson4">База ДКЦП — 4</a>
+    </li>
+    <li>
+      <a href="/etalon-m/slides">Презентация «Эталон-М»</a>
+    </li>
+  </ul>
 </div>
 
 {% endblock %}
