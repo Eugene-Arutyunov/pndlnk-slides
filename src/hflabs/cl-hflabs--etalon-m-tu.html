@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Понимание задачи HFLabs Эталон-М | ОКБ Понедельник</title>
+  
+  <!-- Google Fonts: Inter (близкий к CoFoGothic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ===========================================
+       IDS Design System (адаптированная версия)
+       ОКБ Понедельник | pndlnk.com
+       =========================================== */
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Цвета — принудительно светлая тема */
+    :root {
+      --ids__text-RGB: 35, 37, 38;
+      --ids__link-RGB: 44, 44, 44;
+      --ids__hover-RGB: 245, 65, 55;
+      --ids__accent-RGB: 255, 105, 105;
+      --ids__pen-RGB: 0, 65, 205;
+      --ids__mark-RGB: 230, 228, 228;
+      --ids__surface-RGB: 245, 243, 243;
+      --ids__background-RGB: 255, 255, 255;
+      --ids__inverted-text-RGB: 255, 255, 255;
+      --ids__code-RGB: 50, 50, 50;
+      
+      /* Плотность текста — увеличенный интерлиняж */
+      --ids__density: 1.5;
+      
+      /* Шрифты */
+      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: "JetBrains Mono", "SF Mono", "Monaco", "Inconsolata", monospace;
+    }
+    
+    /* Базовые стили (settings.css) */
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+    
+    @media screen and (max-width: 768px) {
+      html {
+        font-size: 14px;
+      }
+    }
+    
+    body {
+      font-family: var(--font-sans);
+      font-size: 1em;
+      line-height: var(--ids__density);
+      color: rgba(var(--ids__text-RGB), 1);
+      background-color: rgba(var(--ids__background-RGB), 1);
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Сетка (layout.css) */
+    .ids__wrapper {
+      position: relative;
+      width: 68%;
+      margin: 0 auto 0 12%;
+      max-width: 1020px;
+      padding: 2em 0 4em;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .ids__wrapper {
+        width: 100%;
+        margin: 0 auto;
+        padding: 1em calc(var(--ids__density) * 0.6em) 3em;
+      }
+    }
+    
+    /* Типографика (ids.css) */
+    .ids a {
+      color: rgb(var(--ids__link-RGB));
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+      text-decoration-skip-ink: none;
+      text-decoration-color: rgba(var(--ids__link-RGB), 0.2);
+      transition: color 0.3s ease, text-decoration-color 0.3s ease;
+    }
+    
+    .ids a:hover {
+      color: rgb(var(--ids__hover-RGB));
+      text-decoration-color: rgba(var(--ids__hover-RGB), 0.4);
+    }
+    
+    .ids p {
+      margin-top: 0;
+      margin-bottom: 1em;
+      line-height: 1.6;
+    }
+    
+    .ids h1, .ids h2, .ids h3, .ids h4, .ids h5, .ids h6 {
+      margin: 0;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+    
+    .ids h1 {
+      font-size: 2.8em;
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 0.6em;
+      margin-top: 0.5em;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .ids h1 {
+        font-size: 2em;
+      }
+    }
+    
+    .ids h2 {
+      font-size: 1.8em;
+      font-weight: 550;
+      line-height: 1.15;
+      margin-top: 1.8em;
+      margin-bottom: 0.5em;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .ids h2 {
+        font-size: 1.5em;
+      }
+    }
+    
+    .ids h3 {
+      font-size: 1.25em;
+      font-weight: 550;
+      margin-top: 1.5em;
+      margin-bottom: 0.4em;
+    }
+    
+    .ids h4 {
+      font-size: 1.1em;
+      font-weight: 550;
+      margin-top: 1.2em;
+      margin-bottom: 0.4em;
+    }
+    
+    .ids h5 {
+      font-size: 1em;
+      font-weight: 500;
+      margin-top: 1em;
+      margin-bottom: 0.4em;
+    }
+    
+    .ids h6 {
+      font-size: 0.85em;
+      font-family: var(--font-mono);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+    }
+    
+    .ids strong, .ids b {
+      font-weight: 600;
+    }
+    
+    .ids mark {
+      color: inherit;
+      background-color: rgba(var(--ids__mark-RGB), 1);
+      padding: 0.1em 0.2em;
+      border-radius: 0.15em;
+    }
+    
+    /* Списки */
+    .ids ul, .ids ol {
+      margin: 0 0 calc(var(--ids__density) * 0.75em) 0;
+      padding: 0;
+    }
+    
+    .ids li {
+      position: relative;
+      margin-bottom: 0.5em;
+      line-height: 1.6;
+    }
+    
+    .ids ul li {
+      list-style-type: none;
+      padding-left: calc(var(--ids__density) * 0.9em);
+    }
+    
+    .ids ul li:before {
+      position: absolute;
+      left: 0;
+      content: "· ";
+      font-weight: bold;
+    }
+    
+    .ids ol li {
+      list-style: decimal inside none;
+    }
+    
+    /* Цитаты */
+    .ids blockquote {
+      font-size: 1.15em;
+      line-height: var(--ids__density);
+      margin: 0.5em 0 1em 0;
+      padding-left: calc(var(--ids__density) * 0.75em);
+      border-left: 3px solid rgba(var(--ids__accent-RGB), 0.5);
+      color: rgba(var(--ids__text-RGB), 0.85);
+    }
+    
+    /* Код */
+    .ids code {
+      font-size: 0.88em;
+      font-family: var(--font-mono);
+      letter-spacing: 0.01em;
+      padding: 0.15em 0.35em;
+      border-radius: 0.25em;
+      color: rgba(var(--ids__code-RGB), 1);
+      background: rgba(var(--ids__code-RGB), 0.08);
+      border: 1px solid rgba(var(--ids__code-RGB), 0.1);
+    }
+    
+    .ids pre {
+      font-size: 0.85em;
+      font-family: var(--font-mono);
+      background: rgba(var(--ids__surface-RGB), 1);
+      padding: 1em 1.2em;
+      border-radius: 0.4em;
+      overflow-x: auto;
+      margin: 0.5em 0 1.2em;
+      line-height: 1.5;
+    }
+    
+    .ids pre code {
+      font-size: 1em;
+      padding: 0;
+      background: none;
+      border: none;
+    }
+    
+    /* Таблицы */
+    .ids table {
+      width: 100%;
+      border-spacing: 0;
+      margin-bottom: 1.5em;
+      font-size: 0.92em;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .ids table {
+        font-size: 0.8em;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+    
+    .ids table th {
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid rgba(var(--ids__text-RGB), 0.8);
+      padding: 0.5em 0.8em 0.5em 0;
+    }
+    
+    .ids table td {
+      padding: 0.7em 0.8em 0.7em 0;
+      border-bottom: 1px solid rgba(var(--ids__text-RGB), 0.15);
+      vertical-align: top;
+    }
+    
+    .ids table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    /* Горизонтальная линия */
+    .ids hr {
+      border: none;
+      border-top: 1px solid rgba(var(--ids__text-RGB), 0.15);
+      margin: 2em 0;
+    }
+    
+    /* ===========================================
+       Mermaid диаграммы
+       =========================================== */
+    
+    /* Диаграммы — в 2 раза шире контейнера текста */
+    .mermaid-container {
+      margin: 1.5em 0 2em;
+      padding: 1.5em;
+      background: rgba(var(--ids__surface-RGB), 0.2);
+      border: 1px solid rgba(var(--ids__text-RGB), 0.08);
+      border-radius: 0.5em;
+      width: 200%;
+      max-width: calc(100vw - 24px);
+      overflow: hidden;
+    }
+    
+    .mermaid-container svg {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+    }
+    
+    .mermaid {
+      text-align: center;
+    }
+    
+    
+    /* ===========================================
+       Утилиты
+       =========================================== */
+    
+    .emoji-check {
+      color: #22c55e;
+    }
+    
+    .emoji-cross {
+      color: #ef4444;
+    }
+    
+    /* Печать */
+    @media print {
+      .ids__wrapper {
+        width: 100%;
+        margin: 0;
+        padding: 1em;
+      }
+      
+      .toc {
+        page-break-after: always;
+      }
+      
+      .mermaid-container {
+        page-break-inside: avoid;
+      }
+      
+      h2, h3 {
+        page-break-after: avoid;
+      }
+    }
+  </style>
+  
+  <!-- Mermaid.js для рендеринга диаграмм -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+</head>
+<body class="ids">
+  <div class="ids__wrapper">
+    
+    <main>
+      <h1 id="-hflabs">Понимание задачи: Пилот Эталон-М для HFLabs (продукт Вуаль)</h1>
+<h2 id="_1">Контекст и предпосылки</h2>
+<p><strong>Клиент:</strong> HFLabs — российская компания, разрабатывающая продукты для работы с данными</p>
+<p><strong>Проблемный продукт:</strong> Вуаль — система маскирования чувствительных данных при работе с нейросетями и LLM-моделями</p>
+<p><strong>Бизнес-цель:</strong> Увеличить конверсию бесплатных пилотов продукта Вуаль в платные внедрения</p>
+<p><strong>Текущая ситуация:</strong></p>
+<p>HFLabs разработали продукт Вуаль — <strong>ответвление</strong> их флагманского продукта "Маскировщик" (система защиты персональных данных на тестовых стендах). </p>
+<p><strong>О продукте Маскировщик:</strong></p>
+<ul>
+<li>Защищает данные на тестовых стендах: превращает реальные данные в синтетические, но сохраняющие бизнес-логику</li>
+<li>Понятная польза, работает, продаётся</li>
+<li>Экономика продукта сходится</li>
+</ul>
+<p><strong>О продукте Вуаль:</strong></p>
+<ul>
+<li>Новое направление: защита чувствительных данных при работе с нейросетями</li>
+<li>Маскирует персональные данные перед отправкой в LLM</li>
+<li>Позволяет компаниям безопасно использовать AI без риска утечки конфиденциальной информации</li>
+</ul>
+<p><strong>Ситуация с Вуалью (год на рынке):</strong></p>
+<ul>
+<li>Проведено 5 бесплатных пилотов</li>
+<li>Все пилоты технически успешны</li>
+<li>Клиенты восхищаются решением ("Вау как круто!", "Даже круче, чем базы данных")</li>
+<li>Клиенты знают цену ДО пилота (ценовой шок исключается)</li>
+<li>Конверсия в продажи: 0%</li>
+<li>Первый раунд пилотов завершён, HFLabs пробует реактивировать клиентов с улучшенной версией</li>
+</ul>
+<p><strong>Стратегический контекст:</strong></p>
+<p>Экономика бесплатных пилотов не сходится. HFLabs вкладывает значительные ресурсы в каждый пилот (разработка команды, поддержка, иногда допиливание критических фич), но возврат на инвестиции отсутствует. При текущей модели продукт нерентабелен.</p>
+<p>Компания пробовала разные подходы к коммуникации и позиционированию, но результат остаётся прежним: интерес есть, восхищение есть, продаж нет.</p>
+<hr />
+<h2 id="_2">Проблема</h2>
+<p><strong>Несходимость ценностного предложения</strong></p>
+<p>Ситуация выглядит несколько парадоксально:</p>
+<ol>
+<li><strong>Продукт технически работает хорошо</strong> — все пилоты завершаются успешно, функционал работает как ожидается</li>
+<li><strong>Клиенты довольны результатом</strong> — после пилота следует позитивная обратная связь, восторженные отзывы</li>
+<li><strong>Никто не покупает</strong> — 5 пилотов за год, 0 продаж, конверсия 0%</li>
+</ol>
+<p><strong>Основные проблемы:</strong></p>
+<ol>
+<li><strong>Нарушение обмена</strong> — клиент не понимает ценность предложения, несмотря на восхищение функционалом. Возможно, решается не та проблема, которая реально мотивирует к покупке. Цена известна заранее, так что ценовой шок исключается.</li>
+<li><strong>Недостаточная дифференциация </strong>— "Слайды у всех одинаковые. Все рассказывают одну и ту же историю" (Павел Абдюшев). Дифференциация работает только ПОСЛЕ пилота — когда клиент видит продукт в деле. Но в моменте принятия решения о покупке эта дифференциация не влияет на выбор.</li>
+<li>С<strong>лом где-то в клиентском пути</strong> — что-то ломается между завершением успешного пилота и принятием решения о покупке. Клиенты не отказывают категорично, а "уходят в раздумья". Возможно, проблема в отсутствии urgency (срочности) решения проблемы.</li>
+<li><strong>Проблема синтетических данных</strong> — клиенты часто используют синтетические данные в пилоте, а продукт лучше работает с реальными. Это создаёт искажённое впечатление о качестве продукта и может быть точкой слома.</li>
+</ol>
+<p><strong>Гипотеза HFLabs:</strong></p>
+<p>Команда считает, что проблема в "неправильном позиционировании" и неумении "правильно себя показывать". Но возможно, проблема глубже — в самой структуре ценностного предложения и понимании реального мотивационного конфликта клиента.</p>
+<hr />
+<h2 id="_3">Задача</h2>
+<p>Провести пилот Эталон-М для выявления реальных причин нулевой конверсии и создания работающего ценностного предложения для продукта Вуаль.</p>
+<p><strong>Что нужно сделать:</strong></p>
+<ol>
+<li>Собрать эталонную модель (ДКЦП + CJM) для Вуали</li>
+<li>Проанализировать текущий клиентский путь от первого контакта до решения о покупке</li>
+<li>Сравнить текущий путь с эталоном и найти точки слома конверсии</li>
+<li>Привести 2-3 точки контакта к эталону</li>
+<li>Провести A/B-тест: старая коммуникация vs новая</li>
+<li>Измерить изменение конверсии</li>
+</ol>
+<p><strong>Ключевые вопросы, на которые нужно ответить:</strong></p>
+<ul>
+<li>Какой реальный мотивационный конфликт клиента решает Вуаль?</li>
+<li>Почему клиент восхищается продуктом, но не покупает?</li>
+<li>В какой точке клиентского пути происходит "слом" конверсии?</li>
+<li>Есть ли у клиента срочность (urgency) в решении проблемы защиты данных в AI?</li>
+<li>Как проблема синтетических данных влияет на восприятие продукта?</li>
+<li>Прописан ли в КП пилота commitment клиента на покупку при успехе?</li>
+<li>Какая аргументация работает, а какая — нет?</li>
+<li>Что нужно изменить в коммуникации, чтобы конверсия стала &gt;0%?</li>
+</ul>
+<p><strong>Ограничения:</strong></p>
+<ul>
+<li>У HFLabs ограниченный бюджет на эксперименты</li>
+<li>Нужен быстрый результат (экономика не сходится)</li>
+<li>Доступ к клиентам пилотов может быть ограничен</li>
+</ul>
+<hr />
+<h2 id="_4">Предлагаемое решение</h2>
+<p>Мы предлагаем провести пилотное внедрение системы <strong>Эталон-М</strong> — методологии создания эталонного маркетинга с использованием ИИ-ассистентов.</p>
+<h3 id="-">Что такое Эталон-М?</h3>
+<p>Эталон-М — это система из четырёх частей:</p>
+<ol>
+<li><strong>Эталонная модель</strong> — модель ценностного предложения (ДКЦП) + карта клиентского пути (CJM) с аргументами и дизайн-принципами</li>
+<li><strong>Коннектом</strong> — система мониторинга точек контакта с клиентом (интеграция с CRM, записями встреч, email)</li>
+<li><strong>Мозговой центр</strong> — наш экзокортекс для любых LLM «Экселенц» содержит промты и правила как обрабатывать контекст компании и как читать эталонную модель</li>
+<li><strong>ИИ-ассистенты</strong> — боты, рекомендательные асситенты и плагины, которые берут инструкции у Экселенца и осуществляют рекомендации</li>
+<li><strong>Разборы</strong> — регулярные встречи по выявлению паттернов отклонений и корректировка эталона</li>
+</ol>
+<h3 id="hflabs">Наш подход для HFLabs</h3>
+<p>Мы адаптируем Эталон-М под специфику задачи HFLabs, разбив работу на два этапа:</p>
+<hr />
+<h3 id="1">Этап 1: Диагностика и создание эталонной модели</h3>
+<p><strong>Цель:</strong> Понять реальную причину нулевой конверсии и создать эталон ценностного предложения Вуали.</p>
+<p><strong>Срок:</strong> 1-1,5 месяца</p>
+<h4 id="11-1-2">1.1. Предварительная аналитика (1-2 недели)</h4>
+<p><strong>Краткое описание:</strong><br />
+Анализ текущих материалов и данных о завершённых пилотах.</p>
+<p><strong>Что будем делать:</strong></p>
+<ul>
+<li>Брифингование команды HFLabs </li>
+<li>Анализ материалов: презентации Вуали, КП на пилот, демо-сценарии, техническая документация</li>
+<li>Анализ данных о 5 завершённых пилотах: переписка, записи встреч, обратная связь клиентов</li>
+<li>Интервью с внутренними экспертами для понимания текущих гипотез</li>
+</ul>
+<p><strong>Результат:</strong></p>
+<ul>
+<li>Черновик ДКЦП для Вуали</li>
+<li>Первичные гипотезы о причинах нулевой конверсии</li>
+<li>Список гипотез и вопросов для дальнейшего исследования</li>
+</ul>
+<hr />
+<h4 id="12-1">1.2. Стартовая сессия проблематизации (1 неделя)</h4>
+<p><strong>Краткое описание:</strong><br />
+Совместный онлайн воркшоп с командой HFLabs по сборке гипотез о ценностном предложении Вуали.</p>
+<p><strong>Что будем делать:</strong></p>
+<ul>
+<li>Базовый чекап ДКЦП: проверка сходимости текущего ценностного предложения по 9 блокам</li>
+<li>Воркшоп по выявлению мотивационного конфликта клиента: что реально мешает клиенту и как Вуаль это решает</li>
+<li>Создание эскиза модели обмена (ДКЦП)</li>
+<li>Отделение области знания от области незнания: что мы знаем точно, а что требует проверки</li>
+</ul>
+<p><strong>Результат:</strong></p>
+<ul>
+<li>Эскиз ДКЦП-модели Вуали с выявленными пробелами</li>
+<li>Список гипотез о мотивационном конфликте клиента</li>
+<li>Вопросы для интервью с клиентами пилотов</li>
+</ul>
+<hr />
+<h4 id="13-1-2">1.3. Интервью с клиентами пилотов (1-2 недели)</h4>
+<p><strong>Краткое описание:</strong><br />
+Глубинные интервью с клиентами, прошедшими пилот, для понимания реальных причин отказа от покупки.</p>
+<p><strong>Что будем делать:</strong></p>
+<ul>
+<li>Подготовка гайдов для интервью</li>
+<li>Проведение интервью с 5 компаниями, прошедшими пилот Вуали</li>
+<li>Примерные вопросы интервью: Какую проблему пытались решить пилотом? Почему не купили после успешного пилота? Какие данные использовались в пилоте — реальные или синтетические? Что произошло после завершения пилота? Был ли прописан commitment на покупку при успешном пилоте?</li>
+<li>Дополнительно: интервью с ЛПР, если возможно</li>
+<li>Расшифровка и анализ интервью</li>
+</ul>
+<p><strong>Результат:</strong></p>
+<ul>
+<li>Транскрипты и инсайты из 5 интервью</li>
+<li>Понимание реальных мотивов и барьеров клиентов</li>
+<li>Выявленные точки "слома" в процессе принятия решения</li>
+<li>Понимание роли синтетических данных в оценке продукта</li>
+</ul>
+<p><strong>Объём:</strong> 5 интервью по 40-60 минут</p>
+<hr />
+<h4 id="14-2">1.4. Сборка эталонной модели (2 недели)</h4>
+<p><strong>Краткое описание:</strong><br />
+Создание полной эталонной модели: ДКЦП + CJM от первого контакта до конца пилота.</p>
+<p><strong>Что будем делать:</strong></p>
+<ul>
+<li>Анализ всех собранных данных</li>
+<li>Формулирование мотивационного конфликта клиента</li>
+<li>Сборка полной ДКЦП-модели (9 блоков) с проверкой сходимости</li>
+<li>Создание карты клиентского пути (CJM) с точками контакта, аргументами и барьерами</li>
+<li>Формулирование новой аргументации на основе эталона</li>
+<li>Презентация модели команде HFLabs</li>
+</ul>
+<p><strong>Результат:</strong></p>
+<ul>
+<li>Полная эталонная модель Вуали (ДКЦП + CJM)</li>
+<li>Понимание реального мотивационного конфликта клиента</li>
+<li>Выявленные точки слома конверсии</li>
+<li>Новая аргументация и рекомендации по коммуникации</li>
+<li>План действий для этапа 2</li>
+</ul>
+<hr />
+<h3 id="2">Этап 2: Коннектом и внедрение</h3>
+<p><strong>Цель:</strong> Привести 2-3 точки контакта к эталону и измерить изменение конверсии.</p>
+<p><strong>Срок:</strong> 3-4 недели (после согласования результатов этапа 1)</p>
+<p><strong>ВАЖНО:</strong> Коннектом (система мониторинга) для Вуали придётся создавать с нуля, так как это кастомная разработка под инфраструктуру HFLabs.</p>
+<p><strong>Что будем делать:</strong></p>
+<h4 id="21-2-3">2.1. Коннектом: интеграция с точками контакта (2-3 недели)</h4>
+<ul>
+<li>Запуск мозгового центра внутри HFLabs</li>
+<li>Подключение коннектома к 2-3 точкам контакта (%%тут ссылку на заголовок%%)</li>
+<li>Настройка сравнения текущей коммуникации с эталоном</li>
+<li>Настройка рекомендаций (синхронных и асинхронных)</li>
+</ul>
+<h4 id="22-ab-4-6">2.2. A/B-тест и измерение (4-6 недель)</h4>
+<ul>
+<li>Список материалов для перербоатки станет понятен позже</li>
+<li>Запуск новой коммуникации параллельно со старой</li>
+<li>Сравнение конверсии: старый подход vs новый подход</li>
+<li>Корректировка эталона на основе результатов</li>
+<li>Фиксация работающих практик</li>
+</ul>
+<p><strong>Результат этапа 2:</strong></p>
+<ul>
+<li>Работающий коннектом на 2-3 точки контакта</li>
+<li>Переработанные материалы на основе эталона</li>
+<li>Измеренное изменение конверсии</li>
+<li>Понимание, какие изменения дают эффект</li>
+</ul>
+<hr />
+<h2 id="_5">Визуализация процесса пилота и архитектура коннектома</h2>
+<h3 id="_6">Текущий клиентский путь Вуаль</h3>
+<p>На основе интервью с HFLabs (Павел Абдюшев, Елена Данилова) восстановлен текущий путь клиента от первого контакта до отказа от покупки. Диаграмма показывает взаимодействие между участниками процесса и отмечает точки коннектома — места, где система будет собирать данные и выдавать рекомендации.</p>
+<div class="mermaid-container sequence"><svg id="my-svg" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background-color: transparent;" viewBox="-100.5 -10 2198.5 3471" role="graphics-document document" aria-roledescription="sequence"><g><rect x="1456" y="-5" fill="transparent" stroke="rgb(0,0,0, 0.5)" width="612" height="3465" class="rect"/><text x="1762" y="13.5" dominant-baseline="central" alignment-baseline="central" class="text" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="1762" dy="0">Зона Эталон-М</tspan></text></g><g><rect x="-20" y="-5" fill="transparent" stroke="rgb(0,0,0, 0.5)" width="1273" height="3465" class="rect"/><text x="616.5" y="13.5" dominant-baseline="central" alignment-baseline="central" class="text" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="616.5" dy="0">Зона HFLabs</tspan></text></g><rect x="69" y="3115" fill="rgba(255, 200, 200, 0.3)" width="1910" height="240" class="rect"/><rect x="69" y="2536" fill="rgba(200, 150, 255, 0.3)" width="1910" height="284" class="rect"/><rect x="69" y="2212" fill="rgba(255, 150, 150, 0.3)" width="1910" height="240" class="rect"/><rect x="69" y="1869" fill="rgba(150, 255, 150, 0.3)" width="1910" height="284" class="rect"/><rect x="45" y="763" fill="rgba(100, 200, 255, 0.3)" width="1934" height="1047" class="rect"/><rect x="69" y="151" fill="rgba(255, 200, 100, 0.3)" width="1910" height="553" class="rect"/><g><rect x="1893" y="3375" fill="#eaeaea" stroke="#666" width="150" height="65" name="Model" rx="3" ry="3" class="actor actor-bottom"/><text x="1968" y="3407.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="1968" dy="0">Эталонная модель</tspan></text></g><g><rect x="1481" y="3375" fill="#eaeaea" stroke="#666" width="150" height="65" name="Brain" rx="3" ry="3" class="actor actor-bottom"/><text x="1556" y="3407.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="1556" dy="0">Мозговой центр</tspan></text></g><g><rect x="1078" y="3375" fill="#eaeaea" stroke="#666" width="150" height="65" name="Dev" rx="3" ry="3" class="actor actor-bottom"/><text x="1153" y="3407.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="1153" dy="0">Разработка</tspan></text></g><g><rect x="878" y="3375" fill="#eaeaea" stroke="#666" width="150" height="65" name="Product" rx="3" ry="3" class="actor actor-bottom"/><text x="953" y="3407.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="953" dy="0">Продукт</tspan></text></g><g><rect x="658" y="3375" fill="#eaeaea" stroke="#666" width="150" height="65" name="Sales" rx="3" ry="3" class="actor actor-bottom"/><text x="733" y="3407.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="733" dy="0">Продажи</tspan></text></g><g><rect x="458" y="3375" fill="#eaeaea" stroke="#666" width="150" height="65" name="BDM" rx="3" ry="3" class="actor actor-bottom"/><text x="533" y="3407.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="533" dy="0">БДМ</tspan></text></g><g><rect x="258" y="3375" fill="#eaeaea" stroke="#666" width="150" height="65" name="Marketing" rx="3" ry="3" class="actor actor-bottom"/><text x="333" y="3407.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="333" dy="0">Маркетинг</tspan></text></g><g><rect x="5" y="3375" fill="#eaeaea" stroke="#666" width="150" height="65" name="Client" rx="3" ry="3" class="actor actor-bottom"/><text x="80" y="3407.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="80" dy="0">Клиент</tspan></text></g><g><line id="actor7" x1="1968" y1="92" x2="1968" y2="3375" class="actor-line 200" stroke-width="0.5px" stroke="#999" name="Model"/><g id="root-7"><rect x="1893" y="27" fill="#eaeaea" stroke="#666" width="150" height="65" name="Model" rx="3" ry="3" class="actor actor-top"/><text x="1968" y="59.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="1968" dy="0">Эталонная модель</tspan></text></g></g><g><line id="actor6" x1="1556" y1="92" x2="1556" y2="3375" class="actor-line 200" stroke-width="0.5px" stroke="#999" name="Brain"/><g id="root-6"><rect x="1481" y="27" fill="#eaeaea" stroke="#666" width="150" height="65" name="Brain" rx="3" ry="3" class="actor actor-top"/><text x="1556" y="59.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="1556" dy="0">Мозговой центр</tspan></text></g></g><g><line id="actor5" x1="1153" y1="92" x2="1153" y2="3375" class="actor-line 200" stroke-width="0.5px" stroke="#999" name="Dev"/><g id="root-5"><rect x="1078" y="27" fill="#eaeaea" stroke="#666" width="150" height="65" name="Dev" rx="3" ry="3" class="actor actor-top"/><text x="1153" y="59.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="1153" dy="0">Разработка</tspan></text></g></g><g><line id="actor4" x1="953" y1="92" x2="953" y2="3375" class="actor-line 200" stroke-width="0.5px" stroke="#999" name="Product"/><g id="root-4"><rect x="878" y="27" fill="#eaeaea" stroke="#666" width="150" height="65" name="Product" rx="3" ry="3" class="actor actor-top"/><text x="953" y="59.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="953" dy="0">Продукт</tspan></text></g></g><g><line id="actor3" x1="733" y1="92" x2="733" y2="3375" class="actor-line 200" stroke-width="0.5px" stroke="#999" name="Sales"/><g id="root-3"><rect x="658" y="27" fill="#eaeaea" stroke="#666" width="150" height="65" name="Sales" rx="3" ry="3" class="actor actor-top"/><text x="733" y="59.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="733" dy="0">Продажи</tspan></text></g></g><g><line id="actor2" x1="533" y1="92" x2="533" y2="3375" class="actor-line 200" stroke-width="0.5px" stroke="#999" name="BDM"/><g id="root-2"><rect x="458" y="27" fill="#eaeaea" stroke="#666" width="150" height="65" name="BDM" rx="3" ry="3" class="actor actor-top"/><text x="533" y="59.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="533" dy="0">БДМ</tspan></text></g></g><g><line id="actor1" x1="333" y1="92" x2="333" y2="3375" class="actor-line 200" stroke-width="0.5px" stroke="#999" name="Marketing"/><g id="root-1"><rect x="258" y="27" fill="#eaeaea" stroke="#666" width="150" height="65" name="Marketing" rx="3" ry="3" class="actor actor-top"/><text x="333" y="59.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="333" dy="0">Маркетинг</tspan></text></g></g><g><line id="actor0" x1="80" y1="92" x2="80" y2="3375" class="actor-line 200" stroke-width="0.5px" stroke="#999" name="Client"/><g id="root-0"><rect x="5" y="27" fill="#eaeaea" stroke="#666" width="150" height="65" name="Client" rx="3" ry="3" class="actor actor-top"/><text x="80" y="59.5" dominant-baseline="central" alignment-baseline="central" class="actor actor-box" style="text-anchor: middle; font-size: 16px; font-weight: 400;"><tspan x="80" dy="0">Клиент</tspan></text></g></g><style>#my-svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#my-svg .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#my-svg .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#my-svg .error-icon{fill:#552222;}#my-svg .error-text{fill:#552222;stroke:#552222;}#my-svg .edge-thickness-normal{stroke-width:1px;}#my-svg .edge-thickness-thick{stroke-width:3.5px;}#my-svg .edge-pattern-solid{stroke-dasharray:0;}#my-svg .edge-thickness-invisible{stroke-width:0;fill:none;}#my-svg .edge-pattern-dashed{stroke-dasharray:3;}#my-svg .edge-pattern-dotted{stroke-dasharray:2;}#my-svg .marker{fill:#333333;stroke:#333333;}#my-svg .marker.cross{stroke:#333333;}#my-svg svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#my-svg p{margin:0;}#my-svg .actor{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;}#my-svg text.actor&gt;tspan{fill:black;stroke:none;}#my-svg .actor-line{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);}#my-svg .innerArc{stroke-width:1.5;stroke-dasharray:none;}#my-svg .messageLine0{stroke-width:1.5;stroke-dasharray:none;stroke:#333;}#my-svg .messageLine1{stroke-width:1.5;stroke-dasharray:2,2;stroke:#333;}#my-svg #arrowhead path{fill:#333;stroke:#333;}#my-svg .sequenceNumber{fill:white;}#my-svg #sequencenumber{fill:#333;}#my-svg #crosshead path{fill:#333;stroke:#333;}#my-svg .messageText{fill:#333;stroke:none;}#my-svg .labelBox{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;}#my-svg .labelText,#my-svg .labelText&gt;tspan{fill:black;stroke:none;}#my-svg .loopText,#my-svg .loopText&gt;tspan{fill:black;stroke:none;}#my-svg .loopLine{stroke-width:2px;stroke-dasharray:2,2;stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);}#my-svg .note{stroke:#aaaa33;fill:#fff5ad;}#my-svg .noteText,#my-svg .noteText&gt;tspan{fill:black;stroke:none;}#my-svg .activation0{fill:#f4f4f4;stroke:#666;}#my-svg .activation1{fill:#f4f4f4;stroke:#666;}#my-svg .activation2{fill:#f4f4f4;stroke:#666;}#my-svg .actorPopupMenu{position:absolute;}#my-svg .actorPopupMenuPanel{position:absolute;fill:#ECECFF;box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);filter:drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));}#my-svg .actor-man line{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;}#my-svg .actor-man circle,#my-svg line{stroke:hsl(259.6261682243, 59.7765363128%, 87.9019607843%);fill:#ECECFF;stroke-width:2px;}#my-svg :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><defs><symbol id="computer" width="24" height="24"><path transform="scale(.5)" d="M2 2v13h20v-13h-20zm18 11h-16v-9h16v9zm-10.228 6l.466-1h3.524l.467 1h-4.457zm14.228 3h-24l2-6h2.104l-1.33 4h18.45l-1.297-4h2.073l2 6zm-5-10h-14v-7h14v7z"/></symbol></defs><defs><symbol id="database" fill-rule="evenodd" clip-rule="evenodd"><path transform="scale(.5)" d="M12.258.001l.256.004.255.005.253.008.251.01.249.012.247.015.246.016.242.019.241.02.239.023.236.024.233.027.231.028.229.031.225.032.223.034.22.036.217.038.214.04.211.041.208.043.205.045.201.046.198.048.194.05.191.051.187.053.183.054.18.056.175.057.172.059.168.06.163.061.16.063.155.064.15.066.074.033.073.033.071.034.07.034.069.035.068.035.067.035.066.035.064.036.064.036.062.036.06.036.06.037.058.037.058.037.055.038.055.038.053.038.052.038.051.039.05.039.048.039.047.039.045.04.044.04.043.04.041.04.04.041.039.041.037.041.036.041.034.041.033.042.032.042.03.042.029.042.027.042.026.043.024.043.023.043.021.043.02.043.018.044.017.043.015.044.013.044.012.044.011.045.009.044.007.045.006.045.004.045.002.045.001.045v17l-.001.045-.002.045-.004.045-.006.045-.007.045-.009.044-.011.045-.012.044-.013.044-.015.044-.017.043-.018.044-.02.043-.021.043-.023.043-.024.043-.026.043-.027.042-.029.042-.03.042-.032.042-.033.042-.034.041-.036.041-.037.041-.039.041-.04.041-.041.04-.043.04-.044.04-.045.04-.047.039-.048.039-.05.039-.051.039-.052.038-.053.038-.055.038-.055.038-.058.037-.058.037-.06.037-.06.036-.062.036-.064.036-.064.036-.066.035-.067.035-.068.035-.069.035-.07.034-.071.034-.073.033-.074.033-.15.066-.155.064-.16.063-.163.061-.168.06-.172.059-.175.057-.18.056-.183.054-.187.053-.191.051-.194.05-.198.048-.201.046-.205.045-.208.043-.211.041-.214.04-.217.038-.22.036-.223.034-.225.032-.229.031-.231.028-.233.027-.236.024-.239.023-.241.02-.242.019-.246.016-.247.015-.249.012-.251.01-.253.008-.255.005-.256.004-.258.001-.258-.001-.256-.004-.255-.005-.253-.008-.251-.01-.249-.012-.247-.015-.245-.016-.243-.019-.241-.02-.238-.023-.236-.024-.234-.027-.231-.028-.228-.031-.226-.032-.223-.034-.22-.036-.217-.038-.214-.04-.211-.041-.208-.043-.204-.045-.201-.046-.198-.048-.195-.05-.19-.051-.187-.053-.184-.054-.179-.056-.176-.057-.172-.059-.167-.06-.164-.061-.159-.063-.155-.064-.151-.066-.074-.033-.072-.033-.072-.034-.07-.034-.069-.035-.068-.035-.067-.035-.066-.035-.064-.036-.063-.036-.062-.036-.061-.036-.06-.037-.058-.037-.057-.037-.056-.038-.055-.038-.053-.038-.052-.038-.051-.039-.049-.039-.049-.039-.046-.039-.046-.04-.044-.04-.043-.04-.041-.04-.04-.041-.039-.041-.037-.041-.036-.041-.034-.041-.033-.042-.032-.042-.03-.042-.029-.042-.027-.042-.026-.043-.024-.043-.023-.043-.021-.043-.02-.043-.018-.044-.017-.043-.015-.044-.013-.044-.012-.044-.011-.045-.009-.044-.007-.045-.006-.045-.004-.045-.002-.045-.001-.045v-17l.001-.045.002-.045.004-.045.006-.045.007-.045.009-.044.011-.045.012-.044.013-.044.015-.044.017-.043.018-.044.02-.043.021-.043.023-.043.024-.043.026-.043.027-.042.029-.042.03-.042.032-.042.033-.042.034-.041.036-.041.037-.041.039-.041.04-.041.041-.04.043-.04.044-.04.046-.04.046-.039.049-.039.049-.039.051-.039.052-.038.053-.038.055-.038.056-.038.057-.037.058-.037.06-.037.061-.036.062-.036.063-.036.064-.036.066-.035.067-.035.068-.035.069-.035.07-.034.072-.034.072-.033.074-.033.151-.066.155-.064.159-.063.164-.061.167-.06.172-.059.176-.057.179-.056.184-.054.187-.053.19-.051.195-.05.198-.048.201-.046.204-.045.208-.043.211-.041.214-.04.217-.038.22-.036.223-.034.226-.032.228-.031.231-.028.234-.027.236-.024.238-.023.241-.02.243-.019.245-.016.247-.015.249-.012.251-.01.253-.008.255-.005.256-.004.258-.001.258.001zm-9.258 20.499v.01l.001.021.003.021.004.022.005.021.006.022.007.022.009.023.01.022.011.023.012.023.013.023.015.023.016.024.017.023.018.024.019.024.021.024.022.025.023.024.024.025.052.049.056.05.061.051.066.051.07.051.075.051.079.052.084.052.088.052.092.052.097.052.102.051.105.052.11.052.114.051.119.051.123.051.127.05.131.05.135.05.139.048.144.049.147.047.152.047.155.047.16.045.163.045.167.043.171.043.176.041.178.041.183.039.187.039.19.037.194.035.197.035.202.033.204.031.209.03.212.029.216.027.219.025.222.024.226.021.23.02.233.018.236.016.24.015.243.012.246.01.249.008.253.005.256.004.259.001.26-.001.257-.004.254-.005.25-.008.247-.011.244-.012.241-.014.237-.016.233-.018.231-.021.226-.021.224-.024.22-.026.216-.027.212-.028.21-.031.205-.031.202-.034.198-.034.194-.036.191-.037.187-.039.183-.04.179-.04.175-.042.172-.043.168-.044.163-.045.16-.046.155-.046.152-.047.148-.048.143-.049.139-.049.136-.05.131-.05.126-.05.123-.051.118-.052.114-.051.11-.052.106-.052.101-.052.096-.052.092-.052.088-.053.083-.051.079-.052.074-.052.07-.051.065-.051.06-.051.056-.05.051-.05.023-.024.023-.025.021-.024.02-.024.019-.024.018-.024.017-.024.015-.023.014-.024.013-.023.012-.023.01-.023.01-.022.008-.022.006-.022.006-.022.004-.022.004-.021.001-.021.001-.021v-4.127l-.077.055-.08.053-.083.054-.085.053-.087.052-.09.052-.093.051-.095.05-.097.05-.1.049-.102.049-.105.048-.106.047-.109.047-.111.046-.114.045-.115.045-.118.044-.12.043-.122.042-.124.042-.126.041-.128.04-.13.04-.132.038-.134.038-.135.037-.138.037-.139.035-.142.035-.143.034-.144.033-.147.032-.148.031-.15.03-.151.03-.153.029-.154.027-.156.027-.158.026-.159.025-.161.024-.162.023-.163.022-.165.021-.166.02-.167.019-.169.018-.169.017-.171.016-.173.015-.173.014-.175.013-.175.012-.177.011-.178.01-.179.008-.179.008-.181.006-.182.005-.182.004-.184.003-.184.002h-.37l-.184-.002-.184-.003-.182-.004-.182-.005-.181-.006-.179-.008-.179-.008-.178-.01-.176-.011-.176-.012-.175-.013-.173-.014-.172-.015-.171-.016-.17-.017-.169-.018-.167-.019-.166-.02-.165-.021-.163-.022-.162-.023-.161-.024-.159-.025-.157-.026-.156-.027-.155-.027-.153-.029-.151-.03-.15-.03-.148-.031-.146-.032-.145-.033-.143-.034-.141-.035-.14-.035-.137-.037-.136-.037-.134-.038-.132-.038-.13-.04-.128-.04-.126-.041-.124-.042-.122-.042-.12-.044-.117-.043-.116-.045-.113-.045-.112-.046-.109-.047-.106-.047-.105-.048-.102-.049-.1-.049-.097-.05-.095-.05-.093-.052-.09-.051-.087-.052-.085-.053-.083-.054-.08-.054-.077-.054v4.127zm0-5.654v.011l.001.021.003.021.004.021.005.022.006.022.007.022.009.022.01.022.011.023.012.023.013.023.015.024.016.023.017.024.018.024.019.024.021.024.022.024.023.025.024.024.052.05.056.05.061.05.066.051.07.051.075.052.079.051.084.052.088.052.092.052.097.052.102.052.105.052.11.051.114.051.119.052.123.05.127.051.131.05.135.049.139.049.144.048.147.048.152.047.155.046.16.045.163.045.167.044.171.042.176.042.178.04.183.04.187.038.19.037.194.036.197.034.202.033.204.032.209.03.212.028.216.027.219.025.222.024.226.022.23.02.233.018.236.016.24.014.243.012.246.01.249.008.253.006.256.003.259.001.26-.001.257-.003.254-.006.25-.008.247-.01.244-.012.241-.015.237-.016.233-.018.231-.02.226-.022.224-.024.22-.025.216-.027.212-.029.21-.03.205-.032.202-.033.198-.035.194-.036.191-.037.187-.039.183-.039.179-.041.175-.042.172-.043.168-.044.163-.045.16-.045.155-.047.152-.047.148-.048.143-.048.139-.05.136-.049.131-.05.126-.051.123-.051.118-.051.114-.052.11-.052.106-.052.101-.052.096-.052.092-.052.088-.052.083-.052.079-.052.074-.051.07-.052.065-.051.06-.05.056-.051.051-.049.023-.025.023-.024.021-.025.02-.024.019-.024.018-.024.017-.024.015-.023.014-.023.013-.024.012-.022.01-.023.01-.023.008-.022.006-.022.006-.022.004-.021.004-.022.001-.021.001-.021v-4.139l-.077.054-.08.054-.083.054-.085.052-.087.053-.09.051-.093.051-.095.051-.097.05-.1.049-.102.049-.105.048-.106.047-.109.047-.111.046-.114.045-.115.044-.118.044-.12.044-.122.042-.124.042-.126.041-.128.04-.13.039-.132.039-.134.038-.135.037-.138.036-.139.036-.142.035-.143.033-.144.033-.147.033-.148.031-.15.03-.151.03-.153.028-.154.028-.156.027-.158.026-.159.025-.161.024-.162.023-.163.022-.165.021-.166.02-.167.019-.169.018-.169.017-.171.016-.173.015-.173.014-.175.013-.175.012-.177.011-.178.009-.179.009-.179.007-.181.007-.182.005-.182.004-.184.003-.184.002h-.37l-.184-.002-.184-.003-.182-.004-.182-.005-.181-.007-.179-.007-.179-.009-.178-.009-.176-.011-.176-.012-.175-.013-.173-.014-.172-.015-.171-.016-.17-.017-.169-.018-.167-.019-.166-.02-.165-.021-.163-.022-.162-.023-.161-.024-.159-.025-.157-.026-.156-.027-.155-.028-.153-.028-.151-.03-.15-.03-.148-.031-.146-.033-.145-.033-.143-.033-.141-.035-.14-.036-.137-.036-.136-.037-.134-.038-.132-.039-.13-.039-.128-.04-.126-.041-.124-.042-.122-.043-.12-.043-.117-.044-.116-.044-.113-.046-.112-.046-.109-.046-.106-.047-.105-.048-.102-.049-.1-.049-.097-.05-.095-.051-.093-.051-.09-.051-.087-.053-.085-.052-.083-.054-.08-.054-.077-.054v4.139zm0-5.666v.011l.001.02.003.022.004.021.005.022.006.021.007.022.009.023.01.022.011.023.012.023.013.023.015.023.016.024.017.024.018.023.019.024.021.025.022.024.023.024.024.025.052.05.056.05.061.05.066.051.07.051.075.052.079.051.084.052.088.052.092.052.097.052.102.052.105.051.11.052.114.051.119.051.123.051.127.05.131.05.135.05.139.049.144.048.147.048.152.047.155.046.16.045.163.045.167.043.171.043.176.042.178.04.183.04.187.038.19.037.194.036.197.034.202.033.204.032.209.03.212.028.216.027.219.025.222.024.226.021.23.02.233.018.236.017.24.014.243.012.246.01.249.008.253.006.256.003.259.001.26-.001.257-.003.254-.006.25-.008.247-.01.244-.013.241-.014.237-.016.233-.018.231-.02.226-.022.224-.024.22-.025.216-.027.212-.029.21-.03.205-.032.202-.033.198-.035.194-.036.191-.037.187-.039.183-.039.179-.041.175-.042.172-.043.168-.044.163-.045.16-.045.155-.047.152-.047.148-.048.143-.049.139-.049.136-.049.131-.051.126-.05.123-.051.118-.052.114-.051.11-.052.106-.052.101-.052.096-.052.092-.052.088-.052.083-.052.079-.052.074-.052.07-.051.065-.051.06-.051.056-.05.051-.049.023-.025.023-.025.021-.024.02-.024.019-.024.018-.024.017-.024.015-.023.014-.024.013-.023.012-.023.01-.022.01-.023.008-.022.006-.022.006-.022.004-.022.004-.021.001-.021.001-.021v-4.153l-.077.054-.08.054-.083.053-.085.053-.087.053-.09.051-.093.051-.095.051-.097.05-.1.049-.102.048-.105.048-.106.048-.109.046-.111.046-.114.046-.115.044-.118.044-.12.043-.122.043-.124.042-.126.041-.128.04-.13.039-.132.039-.134.038-.135.037-.138.036-.139.036-.142.034-.143.034-.144.033-.147.032-.148.032-.15.03-.151.03-.153.028-.154.028-.156.027-.158.026-.159.024-.161.024-.162.023-.163.023-.165.021-.166.02-.167.019-.169.018-.169.017-.171.016-.173.015-.173.014-.175.013-.175.012-.177.01-.178.01-.179.009-.179.007-.181.006-.182.006-.182.004-.184.003-.184.001-.185.001-.185-.001-.184-.001-.184-.003-.182-.004-.182-.006-.181-.006-.179-.007-.179-.009-.178-.01-.176-.01-.176-.012-.175-.013-.173-.014-.172-.015-.171-.016-.17-.017-.169-.018-.167-.019-.166-.02-.165-.021-.163-.023-.162-.023-.161-.024-.159-.024-.157-.026-.156-.027-.155-.028-.153-.028-.151-.03-.15-.03-.148-.032-.146-.032-.145-.033-.143-.034-.141-.034-.14-.036-.137-.036-.136-.037-.134-.038-.132-.039-.13-.039-.128-.041-.126-.041-.124-.041-.122-.043-.12-.043-.117-.044-.116-.044-.113-.046-.112-.046-.109-.046-.106-.048-.105-.048-.102-.048-.1-.05-.097-.049-.095-.051-.093-.051-.09-.052-.087-.052-.085-.053-.083-.053-.08-.054-.077-.054v4.153zm8.74-8.179l-.257.004-.254.005-.25.008-.247.011-.244.012-.241.014-.237.016-.233.018-.231.021-.226.022-.224.023-.22.026-.216.027-.212.028-.21.031-.205.032-.202.033-.198.034-.194.036-.191.038-.187.038-.183.04-.179.041-.175.042-.172.043-.168.043-.163.045-.16.046-.155.046-.152.048-.148.048-.143.048-.139.049-.136.05-.131.05-.126.051-.123.051-.118.051-.114.052-.11.052-.106.052-.101.052-.096.052-.092.052-.088.052-.083.052-.079.052-.074.051-.07.052-.065.051-.06.05-.056.05-.051.05-.023.025-.023.024-.021.024-.02.025-.019.024-.018.024-.017.023-.015.024-.014.023-.013.023-.012.023-.01.023-.01.022-.008.022-.006.023-.006.021-.004.022-.004.021-.001.021-.001.021.001.021.001.021.004.021.004.022.006.021.006.023.008.022.01.022.01.023.012.023.013.023.014.023.015.024.017.023.018.024.019.024.02.025.021.024.023.024.023.025.051.05.056.05.06.05.065.051.07.052.074.051.079.052.083.052.088.052.092.052.096.052.101.052.106.052.11.052.114.052.118.051.123.051.126.051.131.05.136.05.139.049.143.048.148.048.152.048.155.046.16.046.163.045.168.043.172.043.175.042.179.041.183.04.187.038.191.038.194.036.198.034.202.033.205.032.21.031.212.028.216.027.22.026.224.023.226.022.231.021.233.018.237.016.241.014.244.012.247.011.25.008.254.005.257.004.26.001.26-.001.257-.004.254-.005.25-.008.247-.011.244-.012.241-.014.237-.016.233-.018.231-.021.226-.022.224-.023.22-.026.216-.027.212-.028.21-.031.205-.032.202-.033.198-.034.194-.036.191-.038.187-.038.183-.04.179-.041.175-.042.172-.043.168-.043.163-.045.16-.046.155-.046.152-.048.148-.048.143-.048.139-.049.136-.05.131-.05.126-.051.123-.051.118-.051.114-.052.11-.052.106-.052.101-.052.096-.052.092-.052.088-.052.083-.052.079-.052.074-.051.07-.052.065-.051.06-.05.056-.05.051-.05.023-.025.023-.024.021-.024.02-.025.019-.024.018-.024.017-.023.015-.024.014-.023.013-.023.012-.023.01-.023.01-.022.008-.022.006-.023.006-.021.004-.022.004-.021.001-.021.001-.021-.001-.021-.001-.021-.004-.021-.004-.022-.006-.021-.006-.023-.008-.022-.01-.022-.01-.023-.012-.023-.013-.023-.014-.023-.015-.024-.017-.023-.018-.024-.019-.024-.02-.025-.021-.024-.023-.024-.023-.025-.051-.05-.056-.05-.06-.05-.065-.051-.07-.052-.074-.051-.079-.052-.083-.052-.088-.052-.092-.052-.096-.052-.101-.052-.106-.052-.11-.052-.114-.052-.118-.051-.123-.051-.126-.051-.131-.05-.136-.05-.139-.049-.143-.048-.148-.048-.152-.048-.155-.046-.16-.046-.163-.045-.168-.043-.172-.043-.175-.042-.179-.041-.183-.04-.187-.038-.191-.038-.194-.036-.198-.034-.202-.033-.205-.032-.21-.031-.212-.028-.216-.027-.22-.026-.224-.023-.226-.022-.231-.021-.233-.018-.237-.016-.241-.014-.244-.012-.247-.011-.25-.008-.254-.005-.257-.004-.26-.001-.26.001z"/></symbol></defs><defs><symbol id="clock" width="24" height="24"><path transform="scale(.5)" d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z"/></symbol></defs><defs><marker id="arrowhead" refX="7.9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M -1 0 L 10 5 L 0 10 z"/></marker></defs><defs><marker id="crosshead" markerWidth="15" markerHeight="8" orient="auto" refX="4" refY="4.5"><path fill="none" stroke="#000000" stroke-width="1pt" d="M 1,2 L 6,7 M 6,2 L 1,7" style="stroke-dasharray: 0, 0;"/></marker></defs><defs><marker id="filled-head" refX="15.5" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L14,7 L9,1 Z"/></marker></defs><defs><marker id="sequencenumber" refX="15" refY="15" markerWidth="60" markerHeight="40" orient="auto"><circle cx="15" cy="15" r="6"/></marker></defs><g><rect x="-19.5" y="102" fill="#EDF2AE" stroke="#666" width="199" height="39" class="note"/><text x="80" y="107" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-size: 16px; font-weight: 400;"><tspan x="80">ЭТАП 1: ПРИВЛЕЧЕНИЕ</tspan></text></g><g><rect x="308" y="171" fill="#EDF2AE" stroke="#666" width="1273" height="39" class="note"/><text x="945" y="176" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-size: 16px; font-weight: 400;"><tspan x="945">Подготовка вебинара</tspan></text></g><g><rect x="-29" y="714" fill="#EDF2AE" stroke="#666" width="218" height="39" class="note"/><text x="80" y="719" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-size: 16px; font-weight: 400;"><tspan x="80">ЭТАП 2: КВАЛИФИКАЦИЯ</tspan></text></g><g><rect x="708" y="827" fill="#EDF2AE" stroke="#666" width="873" height="39" class="note"/><text x="1145" y="832" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-size: 16px; font-weight: 400;"><tspan x="1145">Подготовка к встрече</tspan></text></g><g><rect x="708" y="1140" fill="#EDF2AE" stroke="#666" width="873" height="39" class="note"/><text x="1145" y="1145" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-size: 16px; font-weight: 400;"><tspan x="1145">Подготовка презентации и ТКП на пилот</tspan></text></g><g><rect x="55" y="1365" fill="#EDF2AE" stroke="#666" width="1526" height="39" class="note"/><text x="818" y="1370" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-size: 16px; font-weight: 400;"><tspan x="818">Встреча</tspan></text></g><g><rect x="-50.5" y="1820" fill="#EDF2AE" stroke="#666" width="261" height="39" class="note"/><text x="80" y="1825" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-size: 16px; font-weight: 400;"><tspan x="80">ЭТАП 3: ПОДГОТОВКА ПИЛОТА</tspan></text></g><g><rect x="5" y="2163" fill="#EDF2AE" stroke="#666" width="150" height="39" class="note"/><text x="80" y="2168" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-size: 16px; font-weight: 400;"><tspan x="80">ЭТАП 4: ПИЛОТ</tspan></text></g><g><rect x="-23.5" y="2992" fill="#EDF2AE" stroke="#666" width="207" height="39" class="note"/><text x="80" y="2997" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="noteText" dy="1em" style="font-size: 16px; font-weight: 400;"><tspan x="80">ЭТАП 5: ПОСЛЕ ПИЛОТА</tspan></text></g><text x="943" y="225" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Запрос: программа вебинара</text><line x1="334" y1="254" x2="1552" y2="254" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1761" y="269" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Поиск: ключевые темы по ДКЦП</text><line x1="1557" y1="298" x2="1964" y2="298" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1764" y="313" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Контекст: МК, артефакты, аргументы</text><line x1="1967" y1="342" x2="1560" y2="342" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="946" y="357" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Рекомендация: структура и акценты</text><line x1="1555" y1="386" x2="337" y2="386" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="208" y="401" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Вебинар или Конференция</text><line x1="332" y1="430" x2="84" y2="430" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="305" y="445" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Интерес, оставляет контакт</text><line x1="81" y1="474" x2="529" y2="474" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1043" y="489" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Сбор: запрос клиента, вопросы</text><line x1="534" y1="518" x2="1552" y2="518" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1761" y="533" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Поиск: релевантные аргументы</text><line x1="1557" y1="562" x2="1964" y2="562" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1764" y="577" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Контекст: КС, МК, CJM</text><line x1="1967" y1="606" x2="1560" y2="606" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1046" y="621" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Рекомендация: персонализация follow-up и лид-магнита</text><line x1="1555" y1="650" x2="537" y2="650" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="308" y="665" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Отправка материала после вебинара</text><line x1="532" y1="694" x2="84" y2="694" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="405" y="788" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Заявка на пилот</text><line x1="81" y1="817" x2="729" y2="817" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1143" y="881" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Запрос: вопросы для брифинга</text><line x1="734" y1="910" x2="1552" y2="910" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1761" y="925" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Поиск: шаблоны выявления МК</text><line x1="1557" y1="954" x2="1964" y2="954" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1764" y="969" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Контекст: ключевые вопросы</text><line x1="1967" y1="998" x2="1560" y2="998" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1146" y="1013" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Рекомендация: план брифинга клиента</text><line x1="1555" y1="1042" x2="737" y2="1042" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="405" y="1057" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Встреча, обсуждение проблем</text><line x1="81" y1="1086" x2="729" y2="1086" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="842" y="1101" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Приглашение на демо</text><line x1="734" y1="1130" x2="949" y2="1130" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1143" y="1194" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Запрос: структура презентации</text><line x1="734" y1="1223" x2="1552" y2="1223" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1761" y="1238" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Поиск: аргументы под выявленный МК</text><line x1="1557" y1="1267" x2="1964" y2="1267" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1764" y="1282" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Контекст: атрибуты артефакта, дифференциация</text><line x1="1967" y1="1311" x2="1560" y2="1311" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1146" y="1326" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Рекомендация: персонализированная презентация</text><line x1="1555" y1="1355" x2="737" y2="1355" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="745" y="1419" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Демо продукта Вуаль</text><line x1="952" y1="1448" x2="537" y2="1448" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="817" y="1463" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Сбор: вопросы, проблемы, стейкхолдеры, реакция</text><line x1="81" y1="1492" x2="1552" y2="1492" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1761" y="1507" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Поиск: мотивационный конфликт</text><line x1="1557" y1="1536" x2="1964" y2="1536" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1764" y="1551" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Контекст: МК, драйверы, барьеры</text><line x1="1967" y1="1580" x2="1560" y2="1580" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1146" y="1595" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Рекомендация: аргументы под МК клиента</text><line x1="1555" y1="1624" x2="737" y2="1624" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="408" y="1639" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Презентация, материалы, бриф</text><line x1="732" y1="1668" x2="84" y2="1668" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="405" y="1683" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Опросник с требованиями</text><line x1="81" y1="1712" x2="729" y2="1712" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="842" y="1727" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Анализ опросника</text><line x1="734" y1="1756" x2="949" y2="1756" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1253" y="1771" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Анализ опросника</text><line x1="954" y1="1800" x2="1552" y2="1800" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1143" y="1894" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Сбор: требования, ожидания, критерии</text><line x1="734" y1="1923" x2="1552" y2="1923" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1761" y="1938" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Поиск: паттерны успешного commitment</text><line x1="1557" y1="1967" x2="1964" y2="1967" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1764" y="1982" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Контекст: условия обмена, критерии успеха</text><line x1="1967" y1="2011" x2="1560" y2="2011" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1146" y="2026" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Рекомендация: Подготовка КП</text><line x1="1555" y1="2055" x2="737" y2="2055" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="408" y="2070" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">КП на пилот с целями и критериями</text><line x1="732" y1="2099" x2="84" y2="2099" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="405" y="2114" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Согласование КП</text><line x1="81" y1="2143" x2="729" y2="2143" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="615" y="2237" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Передача данных для пилота</text><line x1="81" y1="2266" x2="1149" y2="2266" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1353" y="2281" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Сбор: метаданные, тип данных</text><line x1="1154" y1="2310" x2="1552" y2="2310" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1761" y="2325" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Поиск: риски синтетических данных</text><line x1="1557" y1="2354" x2="1964" y2="2354" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1764" y="2369" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Контекст: паттерны искажений на синтетике</text><line x1="1967" y1="2398" x2="1560" y2="2398" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1356" y="2413" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">АЛЕРТ: риск синтетики! Запросить реальные</text><line x1="1555" y1="2442" x2="1157" y2="2442" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1154" y="2467" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Прогон данных через Вуаль</text><path d="M 1154,2496 C 1214,2486 1214,2526 1154,2516" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="618" y="2561" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Показ результатов v1 is-as</text><line x1="1152" y1="2590" x2="84" y2="2590" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="615" y="2605" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Обратная связь, блокеры</text><line x1="81" y1="2634" x2="1149" y2="2634" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1353" y="2649" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Сбор: реакция клиента, блокеры</text><line x1="1154" y1="2678" x2="1552" y2="2678" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1761" y="2693" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Поиск: скрипты объяснения ограничений</text><line x1="1557" y1="2722" x2="1964" y2="2722" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1764" y="2737" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Контекст: дифференциация, технические границы</text><line x1="1967" y1="2766" x2="1560" y2="2766" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1256" y="2781" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Рекомендация: скрипт объяснения ограничений</text><line x1="1555" y1="2810" x2="957" y2="2810" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1154" y="2835" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Исправление блокеров 1-4 недели</text><path d="M 1154,2864 C 1214,2854 1214,2894 1154,2884" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="618" y="2909" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Показ результатов v2 to-be</text><line x1="1152" y1="2938" x2="84" y2="2938" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="518" y="2953" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Объяснение ограничений</text><line x1="952" y1="2982" x2="84" y2="2982" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="81" y="3046" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Раздумья</text><path d="M 81,3075 C 141,3065 141,3105 81,3095" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1143" y="3140" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Сбор: причины задержки, возражения</text><line x1="734" y1="3169" x2="1552" y2="3169" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1761" y="3184" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Поиск: паттерны раздумий, тактики urgency</text><line x1="1557" y1="3213" x2="1964" y2="3213" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1764" y="3228" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Контекст: драйверы покупки, барьеры решения</text><line x1="1967" y1="3257" x2="1560" y2="3257" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="1146" y="3272" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Рекомендация: тактика создания urgency</text><line x1="1555" y1="3301" x2="737" y2="3301" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/><text x="405" y="3316" text-anchor="middle" dominant-baseline="middle" alignment-baseline="middle" class="messageText" dy="1em" style="font-size: 16px; font-weight: 400;">Решение о покупке</text><line x1="81" y1="3345" x2="729" y2="3345" class="messageLine0" stroke-width="2" stroke="none" marker-end="url(#arrowhead)" style="fill: none;"/></svg></div>
+<h3 id="_7">Точки коннектома: что собираем и что рекомендуем</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Точка коннектома</th>
+<th>Этап</th>
+<th>Собираемый контекст</th>
+<th>Что ищем в Модели</th>
+<th>Рекомендации Мозгового центра</th>
+<th>Источник данных</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Подготовка вебинара</strong></td>
+<td>Привлечение</td>
+<td>Запрос на программу вебинара, тема, целевая аудитория</td>
+<td>Ключевые темы по ДКЦП: МК, артефакты, аргументы</td>
+<td>Структура вебинара и акценты для привлечения КС</td>
+<td>План мероприятий, маркетинг</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Наблюдение за вебинаром</strong></td>
+<td>Привлечение</td>
+<td>Поведение клиента на вебинаре: вопросы, реакции, время присутствия</td>
+<td>Паттерны интереса, релевантные темы для КС</td>
+<td>Персонализация материалов под интерес клиента</td>
+<td>Аналитика вебинара, чат</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Рекомендация после вебинара</strong></td>
+<td>Привлечение</td>
+<td>Запрос клиента, заданные вопросы, интерес к темам</td>
+<td>Релевантные аргументы по КС, МК, CJM</td>
+<td>Персонализация follow-up и лид-магнита</td>
+<td>CRM, регистрации вебинаров</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Подготовка брифа</strong></td>
+<td>Квалификация</td>
+<td>Заявка на пилот, информация о клиенте из CRM</td>
+<td>Шаблоны выявления МК, ключевые вопросы для брифинга</td>
+<td>План брифинга клиента с вопросами</td>
+<td>CRM, история взаимодействий</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Помощь с вопросами на брифе</strong></td>
+<td>Квалификация</td>
+<td>Ответы клиента на брифинг, выявленные проблемы, стейкхолдеры</td>
+<td>Мотивационный конфликт, драйверы, барьеры</td>
+<td>Уточняющие вопросы для углубления МК</td>
+<td>Транскрипт брифинга</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Помощь с презентацией</strong></td>
+<td>Квалификация</td>
+<td>Выявленный МК клиента, стейкхолдеры, техтребования</td>
+<td>Аргументы под МК, атрибуты артефакта, дифференциация</td>
+<td>Акценты в презентации под конкретного клиента</td>
+<td>Материалы брифинга, CRM</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Помощь в написании программы пилота</strong></td>
+<td>Подготовка пилота</td>
+<td>Требования клиента, ожидания от пилота, критерии успеха</td>
+<td>Паттерны успешного commitment, условия обмена, критерии успеха</td>
+<td>Структура КП на пилот с усиленным commitment</td>
+<td>Опросник клиента, переписка</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Постпилотный опросник</strong></td>
+<td>После пилота</td>
+<td>Реакция клиента на результаты пилота, выявленные проблемы, впечатления</td>
+<td>Паттерны успешных пилотов, критерии удовлетворённости</td>
+<td>Вопросы для выявления барьеров и драйверов покупки</td>
+<td>Результаты пилота, обратная связь</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Рекомендации по переводу в продажу</strong></td>
+<td>После пилота</td>
+<td>Причины задержки решения, возражения, барьеры</td>
+<td>Паттерны раздумий, тактики urgency, драйверы покупки</td>
+<td>Тактика создания важности и план перевода в продажу</td>
+<td>CRM, email-переписка, опросник</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">Архитектура коннектома</h3>
+<div class="mermaid-container"><pre class="mermaid">flowchart TB
+    subgraph layer1 ["СЛОЙ 1: Источники данных HFLabs"]
+        direction LR
+        CRM[CRM] 
+        Zoom[Zoom]
+        Email[Email]
+        Docs[Документы]
+    end
+
+    subgraph layer2 ["СЛОЙ 2: Входной коннектом"]
+        direction LR
+        C1[CRM connector]
+        C2[Meeting recorder]
+        C3[Email parser]
+        C4[Document analyzer]
+    end
+
+    subgraph layer3 ["СЛОЙ 3: Эталонная модель "]
+        direction LR
+        DKCP[(ДКЦП)]
+        CJM[(CJM)]
+        Clients[(Клиенты)]
+        Design[(Принципы)]
+    end
+
+    subgraph layer4 ["СЛОЙ 4: Транспорт"]
+        direction LR
+        FileReader[File Reader]
+        API[API слой]
+    end
+
+    subgraph layer5 ["СЛОЙ 5: Мозговой центр"]
+        direction TB
+        LLM[LLM]
+        Support[Экселенц: Промпты + Обработчики + Темплейты]
+        Support <-.-> LLM
+    end
+
+    subgraph layer6 ["СЛОЙ 6: Выходной коннектом"]
+        direction LR
+        Dash[Дашборд]
+        TG[Telegram-бот]
+        Report[Отчёты]
+    end
+
+    CRM --> C1
+    Zoom --> C2
+    Email --> C3
+    Docs --> C4
+
+    C1 --> Clients
+    C2 --> Clients
+    C3 --> Clients
+    C4 --> Clients
+
+    DKCP --> FileReader
+    CJM --> FileReader
+    Clients --> FileReader
+    Design --> FileReader
+
+    FileReader --> API
+    API --> LLM
+
+    LLM --> Dash
+    LLM --> TG
+    LLM --> Report
+
+    style layer1 fill:#e1f5ff
+    style layer2 fill:#fff4e1
+    style layer3 fill:#f0f0f0
+    style layer4 fill:#d4edda
+    style layer5 fill:#ffe1f5
+    style layer6 fill:#fff4e1
+</pre></div>
+<h3 id="_9">Архитектурные слои и примерная реализация</h3>
+<h4 id="1_1">1. Коннектом</h4>
+<p><strong>Коннектом</strong> — это слой взаимодействия с внешним миром (HFLabs). Включает входные и выходные коннекторы.</p>
+<h5 id="_10">Входные коннекторы (сбор данных):</h5>
+<table>
+<thead>
+<tr>
+<th>Коннектор</th>
+<th>Источник данных</th>
+<th>Что собирает</th>
+<th>Примерная реализация</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CRM connector</strong></td>
+<td>CRM HFLabs (вероятно, AmoCRM или Битрикс24)</td>
+<td>Статусы сделок, контакты, история взаимодействий</td>
+<td>Python + REST API CRM</td>
+</tr>
+<tr>
+<td><strong>Meeting recorder</strong></td>
+<td>Zoom, Google Meet</td>
+<td>Транскрипты встреч, длительность, участники</td>
+<td>Whisper API или AssemblyAI</td>
+</tr>
+<tr>
+<td><strong>Email parser</strong></td>
+<td>Gmail, Exchange</td>
+<td>Переписка с клиентами, вложения, тон коммуникации</td>
+<td>Gmail API + Python</td>
+</tr>
+<tr>
+<td><strong>Document analyzer</strong></td>
+<td>Google Docs, файлы</td>
+<td>КП, презентации, опросники клиентов</td>
+<td>Python + LLM для анализа</td>
+</tr>
+</tbody>
+</table>
+<h5 id="_11">Выходные коннекторы (выдача рекомендаций):</h5>
+<table>
+<thead>
+<tr>
+<th>Коннектор</th>
+<th>Назначение</th>
+<th>Что выдаёт</th>
+<th>Примерная реализация</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Дашборд</strong></td>
+<td>Ежедневная работа продажников</td>
+<td>Статус сделок, рекомендации по текущим клиентам, метрики отклонений</td>
+<td>Streamlit или Retool</td>
+</tr>
+<tr>
+<td><strong>Telegram-бот</strong></td>
+<td>Алерты в реальном времени</td>
+<td>Уведомления о рисках, напоминания о follow-up, срочные рекомендации</td>
+<td>Telegram Bot API</td>
+</tr>
+<tr>
+<td><strong>Еженедельный отчёт</strong></td>
+<td>Разбор с руководством</td>
+<td>Паттерны отклонений, статистика по сделкам, инсайты</td>
+<td>PDF/Email генератор</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="2_1">2. Эталонная модель (Хранилище)</h4>
+<p><strong>Для пилота:</strong> Локальный репозиторий с размеченными MD-файлами вместо базы данных.</p>
+<ul>
+<li><strong>Назначение:</strong> Единое хранилище всех данных о взаимодействиях с клиентами</li>
+<li><strong>Структура:</strong> Контекст клиента накапливается от первого контакта до закрытия сделки</li>
+<li><strong>Примерная реализация для пилота:</strong> </li>
+<li>Локальная файловая структура с <strong>размеченными MD-файлами</strong></li>
+<li>Стандартизированный формат для ДКЦП и CJM (YAML frontmatter + структурированный markdown)</li>
+<li>Быстрая обработка через LLM (markdown-friendly)</li>
+<li>Git-репозиторий для версионирования</li>
+</ul>
+<p><strong>Структура репозитория:</strong></p>
+<pre><code>/data/
+  /clients/
+    /client_001/
+      - dkcp.md          # ДКЦП клиента
+      - cjm.md           # Карта пути клиента
+      - meetings/        # Транскрипты встреч
+      - emails/          # Переписка
+      - documents/       # КП, опросники
+  /etalon/
+    - dkcp_vualy.md      # Эталонная ДКЦП Вуали
+    - cjm_vualy.md       # Эталонная CJM
+    - design_principles.md
+</code></pre>
+<p><strong>Конвенция стандартизации (разметка MD-файлов):</strong></p>
+<ul>
+<li>Единый формат ДКЦП: 9 блоков в структурированном markdown + YAML frontmatter с метаданными</li>
+<li>Единый формат CJM: этапы, точки контакта, аргументы в табличной форме</li>
+<li>YAML frontmatter для всех файлов: дата, тип документа, клиент, статус, теги</li>
+<li>Стандартизированные заголовки и структура разделов для машинной обработки</li>
+</ul>
+<p><strong>Преимущества для пилота:</strong></p>
+<ul>
+<li>Нет необходимости разворачивать базу данных</li>
+<li>Быстрый старт (файлы вместо схем БД)</li>
+<li>LLM легко читает markdown</li>
+<li>Версионирование через Git</li>
+<li>Легко показать HFLabs структуру данных</li>
+</ul>
+<p><strong>Переход на БД:</strong> При масштабировании можно перейти на PostgreSQL + JSONB или MongoDB</p>
+<p><strong>Что хранится:</strong></p>
+<ul>
+<li>ДКЦП Вуали — эталонная модель ценностного предложения (9 блоков)</li>
+<li>CJM с аргументами — карта клиентского пути с аргументами для каждой точки</li>
+<li>Дизайн-принципы — правила коммуникации, tone of voice, запрещённые формулировки</li>
+<li>Контекст клиентов — данные о взаимодействиях, собранные коннекторами</li>
+</ul>
+<hr />
+<h4 id="3">3. Транспорт</h4>
+<p><strong>Назначение:</strong> Передача данных между Эталонной моделью и Мозговым центром.</p>
+<p><strong>Компоненты:</strong></p>
+<ul>
+<li>File Reader — читает размеченные MD-файлы из репозитория</li>
+<li>API слой — предоставляет структурированные данные Мозговому центру</li>
+</ul>
+<p><strong>Примерная реализация:</strong></p>
+<ul>
+<li>Python функции для чтения и парсинга размеченного markdown</li>
+<li>Парсинг YAML frontmatter для извлечения метаданных</li>
+<li>Парсинг структурированных блоков ДКЦП и CJM</li>
+<li>Кэширование часто используемых данных (ДКЦП, CJM)</li>
+</ul>
+<hr />
+<h4 id="4">4. Мозговой центр</h4>
+<p><strong>Назначение:</strong> Обработка данных и генерация рекомендаций на основе эталонной модели.</p>
+<p><strong>Компоненты:</strong></p>
+<ul>
+<li>Методологические промпты — промпты для выявления МК, генерации аргументов, анализа отклонений</li>
+<li>Обработчики — сравнение текущей коммуникации с эталоном, выявление паттернов (раздумья, синтетика, отсутствие commitment), определение точки в CJM</li>
+<li>Темплейты — шаблоны рекомендаций, алертов, отчётов</li>
+<li>LLM (GPT-4) — исполнитель промптов, генератор текстов</li>
+</ul>
+<p><strong>Примерная реализация:</strong> Python + GPT-4 API + custom промпт-система</p>
+<h3 id="_12">Примерный стек технологий</h3>
+<table>
+<thead>
+<tr>
+<th>Компонент</th>
+<th>Технология для пилота</th>
+<th>Комментарий</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend</td>
+<td>Python 3.11+</td>
+<td>Основной язык для интеграций и обработки</td>
+</tr>
+<tr>
+<td>API интеграции</td>
+<td>REST API, OAuth2</td>
+<td>Подключение к CRM, email, calendar</td>
+</tr>
+<tr>
+<td>Транскрибация</td>
+<td>Whisper API или AssemblyAI</td>
+<td>Преобразование записей встреч в текст</td>
+</tr>
+<tr>
+<td>LLM</td>
+<td>GPT-5 API или Claude</td>
+<td>Анализ и генерация рекомендаций</td>
+</tr>
+<tr>
+<td>Хранилище</td>
+<td>Локальный Git-репозиторий</td>
+<td>MD-файлы вместо БД для ускорения пилота</td>
+</tr>
+<tr>
+<td>Фронтенд</td>
+<td>Streamlit или Retool</td>
+<td>Быстрый MVP дашборда</td>
+</tr>
+<tr>
+<td>Алерты</td>
+<td>Telegram Bot API</td>
+<td>Уведомления в реальном времени</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_13">Приоритет подключения точек коннектома</h3>
+<p>Для пилота рекомендуется начать с 2-3 точек, которые дадут максимальный эффект:</p>
+<table>
+<thead>
+<tr>
+<th>Приоритет</th>
+<th>Точка</th>
+<th>Почему важно</th>
+<th>Сложность интеграции</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Встречи/Демо</strong></td>
+<td>Здесь происходит основная аргументация</td>
+<td>Средняя (нужна транскрибация)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>КП на пилот</strong></td>
+<td>Здесь клиент остаётся один на один с бренд-коммуникацией</td>
+<td>Низкая (анализ документов)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_14">Результат пилотного проекта с продуктом "Вуаль"</h2>
+<h3 id="1_2">Что будет после этапа 1 (диагностика + эталонная модель):</h3>
+<p><strong>Эталонная модель Вуали:</strong> ДКЦП-модель с выявленным мотивационным конфликтом клиента, карта клиентского пути (CJM) от первого контакта до конца пилота, "точка истины" для всех, кто работает с продуктом.</p>
+<p><strong>Понимание причин нулевой конверсии:</strong> Выявлены точки "слома" в процессе принятия решения, понятно, почему клиент восхищается, но не покупает, гипотезы проверены через интервью с реальными клиентами.</p>
+<p><strong>Новая аргументация:</strong> Аргументы на основе реального мотивационного конфликта, дифференциация от конкурентов на уровне ценностного предложения, рекомендации по изменению коммуникации.</p>
+<p><strong>План действий:</strong> Приоритизированный список изменений для увеличения конверсии, понимание, что нужно менять в первую очередь.</p>
+<h3 id="2_2">Что будет после этапа 2 (если запустим):</h3>
+<p><strong>Ключевая метрика результативности:</strong> Конверсия пилотов в продажи &gt;0%, понимание, какие изменения работают, минимум 1 успешная продажа с новой коммуникацией.</p>
+<h3 id="_15">Дополнительно</h3>
+<p><strong>Работающая система мониторинга:</strong> Коннектом на 2-3 точки контакта, автоматическое выявление отклонений от эталона, данные для непрерывного улучшения.</p>
+<p><strong>Переработанные материалы:</strong> КП на пилот на основе эталонной модели, презентации с правильной аргументацией, скрипты для встреч и демо.</p>
+<p><strong>Методология для масштабирования:</strong> Работающая модель можно применить к другим продуктам HFLabs (Маскировщик, Комбайн, Перекодер).</p>
+<hr />
+<h2 id="_16">План работ и стоимость</h2>
+<table>
+<thead>
+<tr>
+<th>Этап</th>
+<th>Что делаем</th>
+<th>Результаты</th>
+<th>Сроки</th>
+<th>Стоимость</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Этап 1: Диагностика и эталонная модель</strong></td>
+<td>1. Предварительная аналитика<br>2. Стартовая сессия проблематизации (базовый чекап ДКЦП)<br>3. Интервью с клиентами пилотов (5 интервью)<br>4. Сборка эталонной модели (ДКЦП + CJM)</td>
+<td>• Эталонная модель Вуали (ДКЦП + CJM)<br>• Понимание реальной причины нулевой конверсии<br>• Выявленные точки слома<br>• Новая аргументация<br>• План действий для этапа 2</td>
+<td>6-8 недель</td>
+<td>900 000 ₽<br>(фиксированная)</td>
+</tr>
+<tr>
+<td><strong>Этап 2: Коннектом и внедрение</strong> (опционально)</td>
+<td>1. Коннектом на 2-3 точки контакта<br>2. Переработка материалов<br>3. Пилотное внедрение<br>4. A/B-тест и измерение</td>
+<td>• Работающий коннектом<br>• Переработанные материалы<br>• Измеренное изменение конверсии<br>• Минимум 1 продажа с новой коммуникацией</td>
+<td>4-6 недель</td>
+<td>Определяется после этапа 1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>ИТОГО этап 1:</strong><br />
+<strong>Срок:</strong> 6-8 недель (1,5-2 месяца)<br />
+<strong>Стоимость:</strong> 900 000 ₽ (фиксированная)</p>
+<p><strong>Примечания:</strong></p>
+<ul>
+<li>Стоимость и состав этапа 2 определяется после завершения этапа 1</li>
+<li>НДС не облагается по причине применения Бюро упрощённой системы налогообложения (26.2-7 НК РФ)</li>
+<li>Условия оплаты: разбиение оплаты на этапы / спринты</li>
+</ul>
+<hr />
+<h2 id="hflabs_1">Что нужно от HFLabs для старта</h2>
+<h3 id="1_3">1. Доступ к данным о пилотах:</h3>
+<ul>
+<li>Материалы всех 5 завершённых пилотов (презентации, КП, технические задания)</li>
+<li><strong>КП на пилот с прописанными критериями успеха</strong> (чтобы проверить наличие commitment на покупку)</li>
+<li>Информация о типе данных в пилоте (реальные или синтетические)</li>
+<li>Записи/транскрипты встреч с клиентами (если есть)</li>
+<li>Переписка с клиентами (email, мессенджеры)</li>
+<li>Обратная связь после пилотов (формальная и неформальная)</li>
+<li>Причины отказа от покупки (если озвучивались)</li>
+<li>Информация о попытках реактивации клиентов</li>
+</ul>
+<h3 id="2_3">2. Доступ к внутренним экспертам:</h3>
+<ul>
+<li>Павел Абдюшев (продуктовый директор) — участие в воркшопах, интервью</li>
+<li>Команда сейлзов — интервью о процессе пилотов</li>
+<li>Команда маркетинга – интервью о ранних этапах воронки</li>
+<li>Катя (BDM) — интервью о работе с клиентами</li>
+<li>Команда разработки Вуали — интервью о продукте и его возможностях</li>
+</ul>
+<p><strong>Ожидаемая нагрузка:</strong></p>
+<ul>
+<li>Стартовая сессия проблематизации: 3-4 часа (воркшоп)</li>
+<li>Экспертные интервью: по 1 часу на человека</li>
+<li>Регулярные синхронизации: 60 минут раз в 1-2 недели</li>
+</ul>
+<h3 id="3_1">3. Доступ к клиентам пилотов:</h3>
+<ul>
+<li>Контакты 5 компаний, прошедших пилот Вуали</li>
+<li>Возможность провести интервью (40-60 минут)</li>
+<li>Желательно: контакты ЛПР, которые принимали решение о покупке/отказе</li>
+<li>Помощь в организации интервью (письмо от HFLabs с просьбой поучаствовать)</li>
+</ul>
+<p><strong>Важно:</strong> Интервью будут конфиденциальными, материалы используются только для анализа в рамках проекта.</p>
+<h3 id="4_1">4. Материалы о продукте:</h3>
+<ul>
+<li>Презентации Вуали (для клиентов, для вебинаров, для конференций)</li>
+<li>КП на пилот (шаблон и примеры для реальных клиентов)</li>
+<li>Демо-сценарии</li>
+<li>Техническая документация (описание возможностей, требования)</li>
+<li>Конкурентный анализ (если проводился)</li>
+<li>Ценообразование и модель лицензирования</li>
+</ul>
+<h3 id="5">5. Организационная поддержка:</h3>
+<ul>
+<li>Назначить координатора проекта со стороны HFLabs</li>
+<li>Обеспечить доступность ключевых людей для воркшопов (не более 4 часов в неделю)</li>
+<li>Регулярные синхронизации: короткие встречи раз в 1-2 недели для согласования хода работ</li>
+<li>Быстрое согласование доступа к клиентам и материалам</li>
+</ul>
+<hr />
+<h2 id="_17">Критерии успеха</h2>
+<h3 id="1_4">Для этапа 1 (диагностика и эталонная модель):</h3>
+<p><strong>Количественные:</strong></p>
+<ul>
+<li>Создана и верифицирована полная ДКЦП-модель Вуали (9 блоков)</li>
+<li>Проведено 5 интервью с клиентами завершённых пилотов</li>
+<li>Создана карта клиентского пути (CJM) от первого контакта до конца пилота</li>
+<li>Выявлено минимум 3 точки слома конверсии</li>
+</ul>
+<p><strong>Качественные:</strong></p>
+<ul>
+<li>Сформулирован реальный мотивационный конфликт клиента Вуали</li>
+<li>Понятна причина, почему клиенты восхищаются, но не покупают</li>
+<li>Новая аргументация отличается от текущей и основана на реальных данных</li>
+<li>План действий согласован с командой HFLabs и готов к реализации</li>
+<li>Команда HFLabs понимает методологию и может применять её к другим продуктам</li>
+</ul>
+<h3 id="2_4">Для этапа 2 (коннектом и внедрение):</h3>
+<p><strong>Количественные:</strong></p>
+<ul>
+<li>Конверсия пилотов в продажи &gt;0% (минимум 1 продажа)</li>
+<li>Коннектом подключён к 2-3 точкам контакта</li>
+<li>Переработано минимум 3 коммуникационных материала</li>
+<li>Проведён A/B-тест на минимум 2 новых пилотах</li>
+</ul>
+<p><strong>Качественные:</strong></p>
+<ul>
+<li>Измерено влияние новой коммуникации на конверсию</li>
+<li>Понятно, какие изменения дают эффект, а какие — нет</li>
+<li>Команда HFLabs может самостоятельно работать с эталонной моделью</li>
+<li>Есть система мониторинга отклонений от эталона</li>
+</ul>
+<hr />
+<h2 id="hflabs_2">Особенности проекта для HFLabs</h2>
+<h3 id="-_1">Синергия с Эталон-М:</h3>
+<p><strong>HFLabs как кейс:</strong> При успешном результате (конверсия &gt;0%) этот проект может стать демонстрационным кейсом для Эталон-М.</p>
+<p><strong>Демонстрация на реальной проблеме:</strong> B2B SaaS с проблемой конверсии пилотов — типичный кейс для многих компаний. Решение для HFLabs может быть адаптировано для других клиентов.</p>
+<p><strong>Возможность использования в маркетинге:</strong> С согласия HFLabs, результаты проекта (без раскрытия конфиденциальных данных) могут использоваться в маркетинге обеих компаний.</p>
+<h3 id="_18">Риски и ограничения:</h3>
+<p><strong>Зависимость от доступности клиентов:</strong> Успех этапа 1 критически зависит от возможности провести интервью с клиентами завершённых пилотов. Если клиенты не согласятся на интервью, придётся искать альтернативные источники данных.</p>
+<p><strong>Кастомная разработка коннектома:</strong> Этап 2 требует интеграции с инфраструктурой HFLabs. Это не стандартная услуга из каталога, а кастомная разработка. Объём работ и стоимость определяются после этапа 1.</p>
+<p><strong>Время на измерение эффекта:</strong> Для измерения изменения конверсии нужны новые пилоты с новой коммуникацией. Это требует времени (от момента изменений до завершения пилота может пройти 2-3 месяца).</p>
+<p><strong>Ограниченная выборка:</strong> Всего 5 завершённых пилотов — это небольшая выборка. Выводы будут статистически менее значимыми, чем при большем объёме данных. Но для выявления качественных инсайтов этого достаточно.</p>
+<p><strong>Проблема синтетических данных:</strong> Если все пилоты проводились на синтетике, а продукт лучше работает на реальных данных, возможно, проблема не в ценностном предложении, а в методологии проведения пилотов. Это важно выяснить на этапе интервью.</p>
+<hr />
+<p><em>Понимание задачи составлено c помощью технологии Эталон-М на основе транскрипта встречи от 2.02.26</em></p>
+    </main>
+    
+    <footer style="margin-top: 4em; padding-top: 2em; border-top: 1px solid rgba(var(--ids__text-RGB), 0.1); font-size: 0.85em; opacity: 0.6;">
+      <p>
+        <svg style="height: 1.2em; vertical-align: middle; margin-right: 0.5em;" viewBox="0 0 1226.374 69.562" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#2e2f30" d="M521.265,69.562h37.943v-29.812h-6.776V1.355h-98.471c0,27.102-2.71,38.395-10.841,38.395v29.812h37.943v-10.841h40.202v10.841M512.231,20.327v19.423h-27.102c1.807-3.614,2.71-13.551,2.71-19.423h24.392M168.485,60.077c39.298,0,56.463-9.034,56.463-29.812,0-21.23-17.165-30.264-56.463-30.264-39.75,0-56.463,9.034-56.463,30.264,0,20.778,16.713,29.812,56.463,29.812M168.485,21.23c13.099,0,18.52,2.71,18.52,8.582,0,6.324-5.42,8.582-18.52,8.582-12.648,0-18.068-2.259-18.068-8.582,0-5.872,5.42-8.582,18.068-8.582M1043.434,28.457V1.355h-37.943v57.366h40.653l27.102-27.102v27.102h37.943V1.355h-40.653l-27.102,27.102M381.237,42.46v-4.969h51.946v-14.906h-51.946v-4.969h59.173V1.355h-99.375v57.366h99.375v-16.261h-59.173M932.767,19.875V1.355h-40.653v57.366h40.653v-18.52h28.006v18.52h40.653V1.355h-40.653v18.52h-28.006M662.648,1.355h-99.375v57.366h99.375v-16.261h-58.721v-4.969h51.494v-14.906h-51.494v-4.969h58.721V1.355M819.841,12.196V1.355h-40.653v57.366h73.176c25.747,0,37.04-7.227,37.04-23.489s-11.293-23.037-37.04-23.037h-32.523M819.841,39.75v-8.582h18.068c7.679,0,10.841,1.355,10.841,4.517,0,2.71-3.162,4.065-10.841,4.065h-18.068M40.653,58.721V21.682h28.006v37.04h40.653V1.355H0v57.366h40.653M296.317,40.202v18.52h40.653V1.355h-40.653v18.52h-28.006V1.355h-40.653v57.366h40.653v-18.52h28.006M1180.3,1.355l-13.551,18.52h-10.841V1.355h-40.653v57.366h40.653v-18.52h10.841l13.551,18.52h46.074l-24.392-30.716,21.682-26.65h-43.363M679.361,58.721c23.94,0,34.329-11.293,34.329-37.04h20.778v37.04h40.653V1.355h-93.954v6.324c0,16.261-3.614,21.23-14.454,21.23v29.812h12.648"/>
+        </svg>
+        Документ подготовлен командой <strong>ОКБ Понедельник</strong> | <a href="https://ponedelnik.ru">ponedelnik.ru</a>
+      </p>
+    </footer>
+  </div>
+  
+  <script>
+    // Инициализация Mermaid — принудительно светлая тема
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        // Цвета, соответствующие IDS (светлая тема)
+        primaryColor: '#fff4e1',
+        primaryTextColor: '#232526',
+        primaryBorderColor: '#999',
+        lineColor: '#555',
+        secondaryColor: '#e1f5ff',
+        tertiaryColor: '#f0f0f0',
+        
+        // Sequence diagram — увеличенные размеры
+        actorTextColor: '#232526',
+        actorBorder: '#555',
+        actorBkg: '#fff',
+        signalColor: '#232526',
+        signalTextColor: '#232526',
+        
+        // Flowchart
+        nodeBorder: '#888',
+        clusterBkg: '#f8f8f8',
+        clusterBorder: '#bbb',
+        
+        // Шрифт
+        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        fontSize: '14px'
+      },
+      flowchart: {
+        htmlLabels: true,
+        curve: 'basis'
+      },
+      sequence: {
+        diagramMarginX: 20,
+        diagramMarginY: 20,
+        boxMargin: 8,
+        boxTextMargin: 5,
+        noteMargin: 10,
+        messageMargin: 35,
+        mirrorActors: false,
+        actorFontSize: 11,
+        noteFontSize: 10,
+        messageFontSize: 10,
+        width: 140,
+        height: 40
+      }
+    });
+    
+  </script>
+</body>
+</html>
