@@ -1,5 +1,6 @@
-{# Схема модели ДКЦП: highlightBlocks — номера блоков 1–9, которые закрашены; остальные только контур (fill: none). #}
-{% macro dkcp_svg(highlightBlocks=[]) %}
+{# Схема модели ДКЦП: highlightBlocks — номера блоков 1–9, которые закрашены;
+остальные только контур (fill: none). #} {% macro dkcp_svg(highlightBlocks=[])
+%}
 <div class="dkcp-svg">
   <svg
     id="Layer_1"
@@ -20,15 +21,72 @@
         }
       </style>
     </defs>
-    <rect id="_9" data-name="9" class="cls-1{% if 9 not in highlightBlocks %} dkcp-svg__outline{% endif %}" x="22.561" y="210.373" width="177.611" height="301.497" />
-    <rect id="_8" data-name="8" class="cls-1{% if 8 not in highlightBlocks %} dkcp-svg__outline{% endif %}" x="22.561" y="535.651" width="488.957" height="69.966" />
-    <polygon id="_7" data-name="7" class="cls-1{% if 7 not in highlightBlocks %} dkcp-svg__outline{% endif %}" points="1054.104 638.177 5.519 638.177 5.519 708.143 1054.623 708.143 1054.104 638.177" />
-    <polyline id="_6" data-name="6" class="cls-1{% if 6 not in highlightBlocks %} dkcp-svg__outline{% endif %}" points="5.519 136.712 5.519 177.812 1054.623 177.812 1054.623 136.712 529.811 5 5 136.712" />
-    <rect id="_5" data-name="5" class="cls-1{% if 5 not in highlightBlocks %} dkcp-svg__outline{% endif %}" x="533.105" y="535.651" width="503.957" height="69.966" />
-    <rect id="_4" data-name="4" class="cls-1{% if 4 not in highlightBlocks %} dkcp-svg__outline{% endif %}" x="223.953" y="210.373" width="184.14" height="301.497" />
-    <rect id="_3" data-name="3" class="cls-1{% if 3 not in highlightBlocks %} dkcp-svg__outline{% endif %}" x="431.874" y="210.373" width="180.876" height="301.497" />
-    <rect id="_2" data-name="2" class="cls-1{% if 2 not in highlightBlocks %} dkcp-svg__outline{% endif %}" x="636.53" y="210.373" width="184.14" height="301.497" />
-    <rect id="_1" data-name="1" class="cls-1{% if 1 not in highlightBlocks %} dkcp-svg__outline{% endif %}" x="844.451" y="210.373" width="192.611" height="301.497" />
+    <rect
+      id="_9"
+      data-name="1"
+      class="cls-1{% if 1 not in highlightBlocks %} dkcp-svg__outline{% endif %}"
+      x="22.561"
+      y="210.373"
+      width="177.611"
+      height="301.497" />
+    <rect
+      id="_8"
+      data-name="5"
+      class="cls-1{% if 5 not in highlightBlocks %} dkcp-svg__outline{% endif %}"
+      x="22.561"
+      y="535.651"
+      width="488.957"
+      height="69.966" />
+    <polygon
+      id="_7"
+      data-name="7"
+      class="cls-1{% if 7 not in highlightBlocks %} dkcp-svg__outline{% endif %}"
+      points="1054.104 638.177 5.519 638.177 5.519 708.143 1054.623 708.143 1054.104 638.177" />
+    <polyline
+      id="_6"
+      data-name="8"
+      class="cls-1{% if 8 not in highlightBlocks %} dkcp-svg__outline{% endif %}"
+      points="5.519 136.712 5.519 177.812 1054.623 177.812 1054.623 136.712 529.811 5 5 136.712" />
+    <rect
+      id="_5"
+      data-name="6"
+      class="cls-1{% if 6 not in highlightBlocks %} dkcp-svg__outline{% endif %}"
+      x="533.105"
+      y="535.651"
+      width="503.957"
+      height="69.966" />
+    <rect
+      id="_4"
+      data-name="2"
+      class="cls-1{% if 2 not in highlightBlocks %} dkcp-svg__outline{% endif %}"
+      x="223.953"
+      y="210.373"
+      width="184.14"
+      height="301.497" />
+    <rect
+      id="_3"
+      data-name="9"
+      class="cls-1{% if 9 not in highlightBlocks %} dkcp-svg__outline{% endif %}"
+      x="431.874"
+      y="210.373"
+      width="180.876"
+      height="301.497" />
+    <rect
+      id="_2"
+      data-name="4"
+      class="cls-1{% if 4 not in highlightBlocks %} dkcp-svg__outline{% endif %}"
+      x="636.53"
+      y="210.373"
+      width="184.14"
+      height="301.497" />
+    <rect
+      id="_1"
+      data-name="3"
+      class="cls-1{% if 3 not in highlightBlocks %} dkcp-svg__outline{% endif %}"
+      x="844.451"
+      y="210.373"
+      width="192.611"
+      height="301.497" />
   </svg>
 </div>
 {% endmacro %}
