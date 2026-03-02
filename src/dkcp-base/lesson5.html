@@ -1,5 +1,5 @@
 {% extends 'layout.html' %} {% set pageTitle = 'База ДКЦП, занятие 5' %} {%
-import 'dkcp.html' as dkcp %} {% block content %}
+import 'dkcp.html' as dkcp %} {% import 'dkcp-svg.html' as dkcp_svg %} {% block content %}
 
 <div class="slide dkcp-base-slide">
   <div class="dkcp-base-nav-column">
@@ -90,6 +90,7 @@ import 'dkcp.html' as dkcp %} {% block content %}
     <div class="logo">{% include 'pndlnk.html' %}</div>
     <p class="product-title">База ДКЦП</p>
     <h1>Шаблоны аргументов</h1>
+    {{ dkcp_svg.dkcp_svg([1, 2]) }}
   </div>
   <div class="dkcp-base-slide-content">
     <h2>
@@ -112,6 +113,7 @@ import 'dkcp.html' as dkcp %} {% block content %}
     <div class="logo">{% include 'pndlnk.html' %}</div>
     <p class="product-title">База ДКЦП</p>
     <h1>Шаблоны аргументов</h1>
+    {{ dkcp_svg.dkcp_svg([1, 2]) }}
   </div>
   <div class="dkcp-base-slide-content">
     <h2>
@@ -133,6 +135,7 @@ import 'dkcp.html' as dkcp %} {% block content %}
     <div class="logo">{% include 'pndlnk.html' %}</div>
     <p class="product-title">База ДКЦП</p>
     <h1>Шаблоны аргументов</h1>
+    {{ dkcp_svg.dkcp_svg([2, 3, 4]) }}
   </div>
   <div class="dkcp-base-slide-content">
     <h2>Аргумент о&nbsp;связи конфликта, артефакта и&nbsp;атрибутов, 2+3+4</h2>
@@ -151,6 +154,7 @@ import 'dkcp.html' as dkcp %} {% block content %}
     <div class="logo">{% include 'pndlnk.html' %}</div>
     <p class="product-title">База ДКЦП</p>
     <h1>Шаблоны аргументов</h1>
+    {{ dkcp_svg.dkcp_svg([2, 3, 4]) }}
   </div>
   <div class="dkcp-base-slide-content">
     <h2>Аргумент о&nbsp;связи конфликта, артефакта и&nbsp;атрибутов, 2+3+4</h2>
@@ -169,6 +173,7 @@ import 'dkcp.html' as dkcp %} {% block content %}
     <div class="logo">{% include 'pndlnk.html' %}</div>
     <p class="product-title">База ДКЦП</p>
     <h1>Шаблоны аргументов</h1>
+    {{ dkcp_svg.dkcp_svg([1, 4]) }}
   </div>
   <div class="dkcp-base-slide-content">
     <h2>
@@ -214,6 +219,7 @@ import 'dkcp.html' as dkcp %} {% block content %}
     <div class="logo">{% include 'pndlnk.html' %}</div>
     <p class="product-title">База ДКЦП</p>
     <h1>Шаблоны аргументов</h1>
+    {{ dkcp_svg.dkcp_svg([4, 5]) }}
   </div>
   <div class="dkcp-base-slide-content">
     <h2>Аргумент об&nbsp;атрибутах артефакта и&nbsp;вкладе клиента, 4+5</h2>
@@ -232,6 +238,7 @@ import 'dkcp.html' as dkcp %} {% block content %}
     <div class="logo">{% include 'pndlnk.html' %}</div>
     <p class="product-title">База ДКЦП</p>
     <h1>Шаблоны аргументов</h1>
+    {{ dkcp_svg.dkcp_svg([4, 5]) }}
   </div>
   <div class="dkcp-base-slide-content">
     <h2>Аргумент об&nbsp;атрибутах артефакта и&nbsp;вкладе клиента, 4+5</h2>
@@ -250,6 +257,7 @@ import 'dkcp.html' as dkcp %} {% block content %}
     <div class="logo">{% include 'pndlnk.html' %}</div>
     <p class="product-title">База ДКЦП</p>
     <h1>Шаблоны аргументов</h1>
+    {{ dkcp_svg.dkcp_svg([7, 8]) }}
   </div>
   <div class="dkcp-base-slide-content">
     <h2>Аргумент о&nbsp;связи атрибутов компании и&nbsp;ценности, 7+8</h2>
@@ -268,6 +276,7 @@ import 'dkcp.html' as dkcp %} {% block content %}
     <div class="logo">{% include 'pndlnk.html' %}</div>
     <p class="product-title">База ДКЦП</p>
     <h1>Шаблоны аргументов</h1>
+    {{ dkcp_svg.dkcp_svg([7, 8]) }}
   </div>
   <div class="dkcp-base-slide-content">
     <h2>Аргумент о&nbsp;связи атрибутов компании и&nbsp;ценности, 7+8</h2>
@@ -285,6 +294,7 @@ import 'dkcp.html' as dkcp %} {% block content %}
     <div class="logo">{% include 'pndlnk.html' %}</div>
     <p class="product-title">База ДКЦП</p>
     <h1>Шаблоны аргументов</h1>
+    {{ dkcp_svg.dkcp_svg([8, 1]) }}
   </div>
   <div class="dkcp-base-slide-content">
     <h2>Аргумент о&nbsp;связи ценности и&nbsp;клиентского сегмента, 8+1</h2>
@@ -353,14 +363,18 @@ import 'dkcp.html' as dkcp %} {% block content %}
   <div class="dkcp-base-slide-content">
     <ul>
       <li>
-        <strong>Одна модель для очень разных компаний</strong> — ДКЦП работает для
-        любого ценностного предложения, независимо от&nbsp;специфики бизнеса.
+        <strong>Одна модель для очень разных компаний</strong> — ДКЦП работает
+        для любого ценностного предложения, независимо от&nbsp;специфики
+        бизнеса.
       </li>
       <li>
-        <strong>Одна модель для себя и&nbsp;клиента</strong> — клиента понять проще, когда примеряешь на себя.
+        <strong>Одна модель для себя и&nbsp;клиента</strong> — клиента понять
+        проще, когда примеряешь на себя.
       </li>
       <li>
-        <strong>Успех продукта – не лотерея.</strong> Факторы, которые определяют, будет ли продукт продаваться, можно описать с помощью ДКЦП и обсуждать на его основе.
+        <strong>Успех продукта – не лотерея.</strong> Факторы, которые
+        определяют, будет ли продукт продаваться, можно описать с помощью ДКЦП и
+        обсуждать на его основе.
       </li>
       <li>
         <strong>И&nbsp;теперь не&nbsp;можем раз&shy;видеть</strong> — когда
