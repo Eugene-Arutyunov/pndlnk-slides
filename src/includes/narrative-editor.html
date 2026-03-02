@@ -1,0 +1,9 @@
+{# Переиспользуемый редактор нарратива: минимальный WYSIWYG (жирный/курсив), сохранение в localStorage.
+   Опционально в контексте: narrativePlaceholder — текст placeholder. #}
+<div class="narrative-editor" data-narrative-editor {% if narrativePlaceholder %}data-placeholder="{{ narrativePlaceholder }}"{% endif %}>
+  <div class="narrative-editor__toolbar" role="toolbar" aria-label="Форматирование">
+    <button type="button" class="narrative-editor__btn narrative-editor__btn--bold" data-cmd="bold" title="Жирный">B</button>
+    <button type="button" class="narrative-editor__btn narrative-editor__btn--italic" data-cmd="italic" title="Курсив">I</button>
+  </div>
+  <div class="narrative-editor__body" contenteditable="true" role="textbox" aria-multiline="true"></div>
+</div>

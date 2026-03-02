@@ -38,6 +38,11 @@ class SlidesPlayer {
 
   setupKeyboardHandlers() {
     document.addEventListener("keydown", (event) => {
+      // В режиме редактирования нарратива стрелки не переключают слайды
+      const inNarrativeEditor = document.activeElement?.closest?.(".narrative-editor");
+      if (inNarrativeEditor && (event.key === "ArrowLeft" || event.key === "ArrowRight")) {
+        return;
+      }
       // Стрелки - мгновенная навигация
       if (event.key === "ArrowLeft") {
         event.preventDefault();
