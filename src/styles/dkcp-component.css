@@ -239,20 +239,23 @@
       }
     }
 
-    & .dkcp-definition {
-      font-size: 0.4em;
-      font-family: var(--hand);
-      color: rgba(var(--ids__pen-RGB), 1);
-      hyphens: auto;
+  & .dkcp-definition {
+    font-size: 0.76em;
+    font-family: var(--hand);
+    color: rgba(var(--ids__pen-RGB), 1);
+    hyphens: auto;
 
-      @media (width < 767px) {
-        /*font-size: 0.5em;*/
-      }
-
-      & p {
-        margin-bottom: 0.5em;
-      }
+    & p {
+      font-size: 1em;
+      margin-bottom: 0.5em;
     }
+  }
+
+  & .dkcp-block.values .dkcp-definition__inner--values {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
   }
 }
 
@@ -281,5 +284,40 @@
     & .dkcp-title {
       color: rgba(var(--ids__accent-RGB), 1);
     }
+  }
+}
+
+/* Редактируемые блоки (editable) */
+.dkcp-component--editable {
+  --dkcp-editor-font-size-long: 0.85em;
+
+  & .dkcp-definition p {
+    font-size: 1em;
+  }
+
+  & .dkcp-block-editor {
+    font-family: var(--hand);
+    color: rgba(var(--ids__pen-RGB), 1);
+    line-height: 1.1;
+    padding: 0.08em 0.12em;
+    min-height: 2em;
+    outline: none;
+    border: 1px solid rgba(var(--ids__text-RGB), 0.2);
+    border-radius: 2px;
+
+    & p {
+      margin: 0 0 0.3em 0;
+    }
+
+    &.dkcp-block-editor--long {
+      font-size: var(--dkcp-editor-font-size-long);
+    }
+  }
+
+  /* Блок 8 «Ценность»: узкая колонка по центру, рамка только у редактора (впереди крыши) */
+  & .dkcp-block.values .dkcp-definition__inner--values {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

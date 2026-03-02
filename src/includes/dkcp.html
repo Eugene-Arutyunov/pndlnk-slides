@@ -12,6 +12,7 @@
    - companyAttrs: Атрибуты компании (массив)
    - arguments: Аргументы (массив)
    - draft: Режим черновика (boolean, по умолчанию false)
+   - editable: Редактируемые блоки — contenteditable в .dkcp-definition (boolean, по умолчанию false)
    - invalidBlocks: Массив номеров некорректных блоков (по умолчанию [])
      Номера блоков: 1=segment, 2=conflict, 3=artifact, 4=artifactAttrs,
      5=price, 6=exchange, 7=company, 8=values, 9=arguments
@@ -28,6 +29,7 @@
   companyAttrs=[],
   arguments=[],
   draft=false,
+  editable=false,
   invalidBlocks=[]
 ) %}
   {% set isInvalid8 = false %}
@@ -85,15 +87,21 @@
     {%- endif -%}
   {%- endfor -%}
   
-  <div class="dkcp-component{% if draft %} dkcp-component--draft{% endif %}">
+  <div class="dkcp-component{% if draft %} dkcp-component--draft{% endif %}{% if editable %} dkcp-component--editable{% endif %}">
     <div class="dkcp-top{% if isInvalid8 %} dkcp-top--invalid{% endif %}">
       <div class="dkcp-block values{% if isInvalid8 %} dkcp-block--invalid{% endif %}">
         <div class="dkcp-digit">8</div>
         <div class="dkcp-title">Ценность</div>
         <div class="dkcp-definition">
-          {% if values %} {% for item in values %}
-          <p>{{ item }}</p>
-          {% endfor %} {% endif %}
+          <div class="dkcp-definition__inner dkcp-definition__inner--values">
+            {% if editable %}
+            <div class="dkcp-block-editor" contenteditable="true" data-dkcp-block-id="8"></div>
+            {% else %}
+            {% if values %} {% for item in values %}
+            <p>{{ item }}</p>
+            {% endfor %} {% endif %}
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>
@@ -104,9 +112,15 @@
           <div class="dkcp-digit">1</div>
           <div class="dkcp-title">Клиентский сегмент</div>
           <div class="dkcp-definition">
+            <div class="dkcp-definition__inner">
+            {% if editable %}
+            <div class="dkcp-block-editor" contenteditable="true" data-dkcp-block-id="1"></div>
+            {% else %}
             {% if segment %} {% for item in segment %}
             <p>{{ item }}</p>
             {% endfor %} {% endif %}
+            {% endif %}
+            </div>
           </div>
           <div class="dkcp-hint"></div>
         </div>
@@ -115,9 +129,15 @@
           <div class="dkcp-digit">2</div>
           <div class="dkcp-title">Мотивационный конфликт</div>
           <div class="dkcp-definition">
+            <div class="dkcp-definition__inner">
+            {% if editable %}
+            <div class="dkcp-block-editor" contenteditable="true" data-dkcp-block-id="2"></div>
+            {% else %}
             {% if conflict %} {% for item in conflict %}
             <p>{{ item }}</p>
             {% endfor %} {% endif %}
+            {% endif %}
+            </div>
           </div>
           <div class="dkcp-hint"></div>
         </div>
@@ -126,9 +146,15 @@
           <div class="dkcp-digit">9</div>
           <div class="dkcp-title">Аргументы</div>
           <div class="dkcp-definition">
+            <div class="dkcp-definition__inner">
+            {% if editable %}
+            <div class="dkcp-block-editor" contenteditable="true" data-dkcp-block-id="9"></div>
+            {% else %}
             {% if arguments %} {% for item in arguments %}
             <p>{{ item }}</p>
             {% endfor %} {% endif %}
+            {% endif %}
+            </div>
           </div>
           <div class="dkcp-hint"></div>
         </div>
@@ -137,9 +163,15 @@
           <div class="dkcp-digit">4</div>
           <div class="dkcp-title">Атрибуты артефакта</div>
           <div class="dkcp-definition">
+            <div class="dkcp-definition__inner">
+            {% if editable %}
+            <div class="dkcp-block-editor" contenteditable="true" data-dkcp-block-id="4"></div>
+            {% else %}
             {% if artifactAttrs %} {% for item in artifactAttrs %}
             <p>{{ item }}</p>
             {% endfor %} {% endif %}
+            {% endif %}
+            </div>
           </div>
           <div class="dkcp-hint"></div>
         </div>
@@ -147,9 +179,15 @@
           <div class="dkcp-digit">3</div>
           <div class="dkcp-title">Артефакт</div>
           <div class="dkcp-definition">
+            <div class="dkcp-definition__inner">
+            {% if editable %}
+            <div class="dkcp-block-editor" contenteditable="true" data-dkcp-block-id="3"></div>
+            {% else %}
             {% if artifact %} {% for item in artifact %}
             <p>{{ item }}</p>
             {% endfor %} {% endif %}
+            {% endif %}
+            </div>
           </div>
           <div class="dkcp-hint"></div>
         </div>
@@ -160,18 +198,30 @@
           <div class="dkcp-digit">5</div>
           <div class="dkcp-title">Вклад клиента</div>
           <div class="dkcp-definition">
+            <div class="dkcp-definition__inner">
+            {% if editable %}
+            <div class="dkcp-block-editor" contenteditable="true" data-dkcp-block-id="5"></div>
+            {% else %}
             {% if priceConditions %} {% for item in priceConditions %}
             <p>{{ item }}</p>
             {% endfor %} {% endif %}
+            {% endif %}
+            </div>
           </div>
         </div>
         <div class="dkcp-block exchange{% if isInvalid6 %} dkcp-block--invalid{% endif %}">
           <div class="dkcp-digit">6</div>
           <div class="dkcp-title">Условия обмена</div>
           <div class="dkcp-definition">
+            <div class="dkcp-definition__inner">
+            {% if editable %}
+            <div class="dkcp-block-editor" contenteditable="true" data-dkcp-block-id="6"></div>
+            {% else %}
             {% if exchangeConditions %} {% for item in exchangeConditions %}
             <p>{{ item }}</p>
             {% endfor %} {% endif %}
+            {% endif %}
+            </div>
           </div>
         </div>
       </div>
@@ -182,9 +232,15 @@
         <div class="dkcp-digit">7</div>
         <div class="dkcp-title">Атрибуты компании</div>
         <div class="dkcp-definition">
+          <div class="dkcp-definition__inner">
+          {% if editable %}
+          <div class="dkcp-block-editor" contenteditable="true" data-dkcp-block-id="7"></div>
+          {% else %}
           {% if companyAttrs %} {% for item in companyAttrs %}
           <p>{{ item }}</p>
           {% endfor %} {% endif %}
+          {% endif %}
+          </div>
         </div>
       </div>
     </div>
