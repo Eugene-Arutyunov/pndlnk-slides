@@ -1,0 +1,18 @@
+/* Два логотипа на титульном слайде (Яндекс + Понедельник) */
+.title-logos {
+  margin: 6em 0 0 0;
+  display: flex;
+  gap: 2em;
+  flex-wrap: wrap;
+
+  & img {
+    width: auto;
+  }
+
+  & .title-caption {
+    margin: -0.2em 0 0 1em;
+    font-size: 0.9em;
+    width: 15em;
+    font-family: var(--mono);
+  }
+}
