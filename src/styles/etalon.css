@@ -44,21 +44,22 @@
       }
     }
 
+    & h4 {
+      font-size: 0.8em;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: var(--mono);
+      margin-bottom: 0.3em;
+      opacity: 0.5;
+    }
+
     & .loud {
       font-size: 2em;
       line-height: 1.1;
       font-weight: 400;
       font-family: var(--gothic);
       margin-bottom: 0.3em;
-
-      & mark {
-        background-color: transparent;
-        text-decoration: underline;
-        text-underline-offset: 0.1em;
-        text-decoration-thickness: 0.1em;
-        text-decoration-skip-ink: none;
-        text-decoration-color: rgba(var(--ids__text-RGB), 1);
-      }
     }
 
     & table {
@@ -142,18 +143,12 @@
 .bento-grid {
   display: flex;
   flex-wrap: wrap;
-  --gap: 0.1em;
+  --gap: 1em;
   gap: var(--gap);
 
-  &.dark {
-    & .bento-grid-item {
-      padding: 0.5em 1em 0.7em 0.5em;
-      background-color: rgba(var(--ids__text-RGB), 1);
-      color: rgba(var(--ids__background-RGB), 1);
-    }
-  }
-
   & .bento-grid-item {
+    border-top: solid 1px rgba(var(--ids__text-RGB), 0.3);
+    padding: 0.5em 0em 0em 0em;
     &.L {
       width: 100%;
     }
@@ -162,14 +157,10 @@
       width: calc(50% - var(--gap) / 2);
     }
 
-    & h4 {
-      font-size: 0.8em;
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-family: var(--mono);
-      margin-bottom: 0.3em;
-      opacity: 0.5;
+    &.dark {
+      padding: 0.5em 1em 0.7em 0.5em;
+      background-color: rgba(var(--ids__text-RGB), 1);
+      color: rgba(var(--ids__background-RGB), 1);
     }
   }
 }

@@ -117,8 +117,13 @@
   }
 
   & mark {
-    color: rgb(var(--ids__text-RGB));
-    background-color: rgb(var(--ids__mark-RGB));
+    background-color: transparent;
+    text-decoration: underline;
+    text-underline-offset: 0.1em;
+    text-decoration-thickness: 0.1em;
+    text-decoration-skip-ink: none;
+    color: rgba(var(--ids__text-RGB), 1);
+    text-decoration-color: rgba(var(--ids__text-RGB), 1);
   }
 
   & ul,
