@@ -93,6 +93,13 @@
 
       overflow: hidden;
 
+      /* Настоящее жирное (700), без синтеза — в ids strong задан 600, у VF может не быть 600 → faux bold */
+      & strong,
+      & b {
+        font-weight: 700;
+        font-synthesis: none;
+      }
+
       @media print {
         overflow: hidden;
         print-color-adjust: exact;
