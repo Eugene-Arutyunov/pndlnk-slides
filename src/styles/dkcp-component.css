@@ -96,7 +96,7 @@
 }
 
 .dkcp-block {
-  padding: 0.3em;
+  padding: 0.3em 0 0.3em 0.3em;
   background-color: rgba(var(--ids__surface-RGB), 1);
 
   @media (width < 767px) {

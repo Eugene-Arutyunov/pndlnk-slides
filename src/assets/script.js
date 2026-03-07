@@ -38,12 +38,33 @@ class SlidesPlayer {
 
   setupKeyboardHandlers() {
     document.addEventListener("keydown", (event) => {
-      // В режиме редактирования (нарратив или блок ДКЦП) стрелки не переключают слайды
+      // В режиме редактирования (нарратив или блок ДКЦП) горячие клавиши не перехватываем — даём печатать
       const active = document.activeElement;
-      const inEditor = active?.closest?.(".narrative-editor") || active?.closest?.(".dkcp-block-editor");
-      if (inEditor && (event.key === "ArrowLeft" || event.key === "ArrowRight")) {
-        return;
+      const inEditor =
+        active?.closest?.(".narrative-editor") ||
+        active?.closest?.(".dkcp-component--editable");
+      if (inEditor) {
+        const slideKeys = [
+          "ArrowLeft",
+          "ArrowRight",
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+        ];
+        const isP = event.key === "p" || event.key === "P" || event.key === "KeyP";
+        const isSlideHotkey =
+          slideKeys.includes(event.key) ||
+          (isP && !event.metaKey && !event.ctrlKey);
+        if (isSlideHotkey) return;
       }
+
       // Стрелки - мгновенная навигация
       if (event.key === "ArrowLeft") {
         event.preventDefault();
@@ -52,13 +73,11 @@ class SlidesPlayer {
         event.preventDefault();
         this.nextSlide();
       }
-
       // Цифры - ввод номера слайда с задержкой
       else if (event.key >= "0" && event.key <= "9") {
         event.preventDefault();
         this.handleNumberInput(event.key);
       }
-
       // Клавиша P - переключить габаритный прямоугольник (но не перехватывать Cmd+P/Ctrl+P)
       else if (
         (event.key === "p" || event.key === "P" || event.key === "KeyP") &&
