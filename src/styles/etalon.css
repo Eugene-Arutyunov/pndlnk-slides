@@ -174,3 +174,8 @@ p.formula {
     border-radius: 0.2em;
   }
 }
+
+.arg-template-example {
+  font-family: var(--hand);
+  color: rgba(var(--ids__pen-RGB), 1);
+}
